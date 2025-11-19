@@ -88,8 +88,11 @@ model  = joblib.load("kmeans_model.pkl")
 #Load Data Baru
 new_data = pd_read.csv("new_data_anomaly_IoT.csv")
 
+#Standarisasi data baru
+new_data_scaler = scaler.transform(new_data)
+
 #Prediksi
-Prediksi = model.predict(new_data)
+Prediksi = model.predict(new_data_scaler)
 print("Cluster baru", Prediksi)
 
 ```
