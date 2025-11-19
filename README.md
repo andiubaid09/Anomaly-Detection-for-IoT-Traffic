@@ -6,9 +6,12 @@ Kumpulan proyek ini dalam satu repository bertujuan untuk melakukan *Anomaly Det
 Setelah clustering dilakukan, hasilnya dianalisis menggunakan statistik cluster, visualisasi PCA, boxplot, dan distribusi cluster untuk mengidentifikasi pola anomali di berbagai model *unsupervised learning*. 
 
 ## 🚀 Tujuan
-- Membandingkan performa berbagai model .
-- Mendokumentasikan preprocessing, hyperparameter tuning, dan evaluasi.
-- Menyediakan model siap pakai untuk prediksi harga tiket pesawat.
+- Mendeteksi anomali (*traffic abnormal*) pada jaringan IoT menggunakan *unsupervised learning*.
+- Mengelompokan traffic IoT menjadi normal dan anomali tanpa menggunakan label.
+- Menguji banyak algoritma *unsupervised learning* untuk memahami *behavior* data IoT.
+- Membandingkan performa berbagai model *unsupervised learning*.
+- Mendokumentasikan visualisasi dari PCA 2D, PCA 3D, distribusi masing-masing fitur berdasarkan cluster.
+- Menyediakan model siap pakai untuk clustering pada datasheet baru.
 
 ---
 
