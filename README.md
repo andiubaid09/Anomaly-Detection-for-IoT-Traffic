@@ -41,18 +41,11 @@ Setelah itu, langkah pengujian dilakukan secara *waterfall* seperti berikut:
 8. Simpan Model
 
 ## 📊 Model yang Tersedia
-1. 🌲 Random Forest Regressor
-  - Terdiri dari banyak pohon keputusan *(Decision Tree)* yang dibangun secara acak dari dataset. Setiap pohon akan membuat prediksi sendiri, lalu hasil akhirnya diambil sebagai rata-rata dari semua pohon untuk regresi.
-  - Pipeline dengan TransformedTargetRegressor (log-transform target).
-  - Hyperparameter tuning via GridSearchCV.
-  - Best Params ditemukan : 
-    1. max_depth : 15
-    2. min_samples_split : 5,
-    3. n_estimators : 200 
-  - Kinerja:
-    - R²: 0.9537
-    - MAE: 2808.1478
-    - RMSE: 4882.4682
+1. K-Means Clustering
+  - K-Means clustering adalah proses iteratif (berulang) yang bertujuan untuk membagi data menjadi K kelompok (cluster) sedemikian rupa sehingga titik data dalam satu kelompok memiliki kemiripan yang lebih besar satu sama lain daripada dengan titik data di kelompok lain. Kemiripan ini diukur berdasarkan jarak (*Euclidean Distance*) dari setiap titik data ke titik pusat kelompok yang disebut *centroid*
+  - Algoritma paling populer ini membagi N pengamatan menjadi K cluster, dimana setiap pengamatan termasuk dalam cluster dengan *mean* terdekat (centeroid).
+  - Mengelompokkan traffic IoT menjadi cluster berdasarkan pola statistik.
+  - Memilih k=2 karena target proyek adalah membagi cluster mayoritas biasanya normal dan cluster minoritas biasanya anomali.
 
 2. 📈 Linear Regression 
   - Model paling sederhana yang digunakan untuk memprediksi nilai kontinu (angka) berdasarkan hubungan linear antara input (fitur) dan output (target).
