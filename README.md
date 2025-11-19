@@ -54,34 +54,44 @@ Setelah itu, langkah pengujian dilakukan secara *waterfall* seperti berikut:
   - Hasilnya adalah 
     - Cluster 0 = 5.004.898 baris
     - Cluster 1 =    46.708 baris (0.9%) -> Kandidat anomali
-    - Silhouette Score = 0.849 (sangat baik)
-    - Davies Bouldin Score = 0.503 (sangat baik)
+    - Silhouette Score = 0.849
+    - Davies Bouldin Score = 0.503 
 
 2. DBSCAN (*Density-Based Spatial Clustering of Application with Noise)
 
 ## 🛠️ Cara Menggunakan Model
-Contoh untuk K-Means:
+Contoh untuk K-Means menggunakan pipeline:
 ```bash
 import pandas as pd
 import joblib
 
 # Load Model 
-model = joblib.load("rfr-flight_price_prediction.pkl")
+model = joblib.load("kmeans_pipeline_model.pkl")
 
-# Data Baru
-new_data = pd.DataFrame({
-    'source_city' : ['Delhi'],
-    'departure_time' : ['Evening'],
-    'stops' : ['zero'],
-    'arrival_time' : ['Night'],
-    'destination_city' : ['Mumbai'],
-    'class' : ['Economoy'],
-    'days_left' : 1 
-})
+# Load Data Baru
+new_data = pd.read_csv("new_data_anomaly_IoT.csv")
 
 # Prediksi
-prediksi = model.predict(new_data)[0]
-print(f"Prediksi Harga Tiket : {prediksi:,.2f}")
+prediksi = model.predict(new_data)
+print("Cluster baru", prediksi)
+```
+
+Contoh menggunakan KMeans tanpa pipeline:
+```bash
+import pandas as pd
+import joblib
+
+#Load Scaler dan model
+scaler = joblib.load("scaler.pkl")
+model  = joblib.load("kmeans_model.pkl")
+
+#Load Data Baru
+new_data = pd_read.csv("new_data_anomaly_IoT.csv")
+
+#Prediksi
+Prediksi = model.predict(new_data)
+print("Cluster baru", Prediksi)
+
 ```
 
 ## 🧑‍💻 Kontributor
