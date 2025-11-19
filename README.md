@@ -38,6 +38,12 @@ Setelah itu, langkah pengujian dilakukan secara *waterfall* seperti berikut:
 6. Evaluasi Clustering dan Outlier
 7. Visualisasi
 8. Simpan Model
+  Cara simpan model:
+  ```bash
+  import joblib
+  joblib.dump(kmeans, 'kmeans_model.pkl')
+  joblib.dump(kmeans, 'scaler.pkl')  # Jika tidak menggunakan pipeline
+  ```
 
 ## 📊 Model yang Tersedia
 1. K-Means Clustering
@@ -48,6 +54,7 @@ Setelah itu, langkah pengujian dilakukan secara *waterfall* seperti berikut:
   - Hasilnya adalah 
     - Cluster 0 = 5 juta baris
     - Cluster 1 = 46 ribu baris (0.9%) -> Kandidat anomali
+    - Silhouette Score = 0.850 (sangat baik)
 
 
 2. DBSCAN (*Density-Based Spatial Clustering of Application with Noise)
