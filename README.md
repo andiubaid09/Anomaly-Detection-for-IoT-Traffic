@@ -45,6 +45,10 @@ Setelah itu, langkah pengujian dilakukan secara *waterfall* seperti berikut:
   - Algoritma paling populer ini membagi N pengamatan menjadi K cluster, dimana setiap pengamatan termasuk dalam cluster dengan *mean* terdekat (centeroid).
   - Mengelompokkan traffic IoT menjadi cluster berdasarkan pola statistik.
   - Memilih k=2 karena target proyek adalah membagi cluster mayoritas biasanya normal dan cluster minoritas biasanya anomali.
+  - Hasilnya adalah 
+    - Cluster 0 = 5 juta baris
+    - Cluster 1 = 46 ribu baris (0.9%) -> Kandidat anomali
+
 
 2. DBSCAN (*Density-Based Spatial Clustering of Application with Noise)
 
