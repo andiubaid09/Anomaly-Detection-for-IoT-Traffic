@@ -20,7 +20,7 @@ Dataset berisi flow-level metrics seperti :`dt`,`dur`,`tot_dur`,`pktrate`,`port_
 Pastikan Anda sudah menginstal dependensi berikut:
 
 ```bash
-pip install pandas numpy scikit-learn joblib
+pip install pandas numpy scikit-learn joblib matplotlib seaborn
 ```
 Setelah itu, langkah pengujian dilakukan secara *waterfall* seperti berikut:
 1. Load Dataset
@@ -52,8 +52,8 @@ Setelah itu, langkah pengujian dilakukan secara *waterfall* seperti berikut:
   - Mengelompokkan traffic IoT menjadi cluster berdasarkan pola statistik.
   - Memilih k=2 karena target proyek adalah membagi cluster mayoritas biasanya normal dan cluster minoritas biasanya anomali.
   - Hasilnya adalah 
-    - Cluster 0 = 5 juta baris
-    - Cluster 1 = 46 ribu baris (0.9%) -> Kandidat anomali
+    - Cluster 0 = 5.004.898 baris
+    - Cluster 1 =    46.708 baris (0.9%) -> Kandidat anomali
     - Silhouette Score = 0.850 (sangat baik)
 
 
