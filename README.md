@@ -54,8 +54,8 @@ Setelah itu, langkah pengujian dilakukan secara *waterfall* seperti berikut:
   - Hasilnya adalah 
     - Cluster 0 = 5.004.898 baris
     - Cluster 1 =    46.708 baris (0.9%) -> Kandidat anomali
-    - Silhouette Score = 0.850 (sangat baik)
-
+    - Silhouette Score = 0.849 (sangat baik)
+    - Davies Bouldin Score = 0.503 (sangat baik)
 
 2. DBSCAN (*Density-Based Spatial Clustering of Application with Noise)
 
