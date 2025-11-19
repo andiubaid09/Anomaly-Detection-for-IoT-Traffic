@@ -34,7 +34,11 @@ Setelah itu, langkah pengujian dilakukan secara *waterfall* seperti berikut:
     ```bash
     dt, dur, tot_dur, pktrate, port_no, rx_kbps, tot_kbps
     ```
-
+4. Scaling (*StandardScaler*)
+5. Modeling (*Unsupervised Algorithms)
+6. Evaluasi Clustering dan Outlier
+7. Visualisasi
+8. Simpan Model
 
 ## 📊 Model yang Tersedia
 1. 🌲 Random Forest Regressor
