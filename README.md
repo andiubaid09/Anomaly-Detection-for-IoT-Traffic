@@ -17,12 +17,24 @@ Dataset berisi flow-level metrics seperti :`dt`,`dur`,`tot_dur`,`pktrate`,`port_
 
 ---
 
-## 🔧 Setup Lingkungan
+## 🔧 Setup Lingkungan & Pipeline Proyek
 Pastikan Anda sudah menginstal dependensi berikut:
 
 ```bash
 pip install pandas numpy scikit-learn joblib
 ```
+Setelah itu, langkah pengujian dilakukan secara *waterfall* seperti berikut:
+1. Load Dataset
+2. Data Cleaning
+  - Hilangkan nilai negatif
+  - Hilangkan kolom redundan
+3. Feature Selection
+  Fitur final yang dipakai:
+
+    ```bash
+    dt, dur, tot_dur, pktrate, port_no, rx_kbps, tot_kbps
+    ```
+
 
 ## 📊 Model yang Tersedia
 1. 🌲 Random Forest Regressor
