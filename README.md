@@ -5,6 +5,8 @@ Kumpulan proyek ini dalam satu repository bertujuan untuk melakukan *Anomaly Det
 - Cluster 1 -> Anomalous/ Potential Attack Traffic
 Setelah clustering dilakukan, hasilnya dianalisis menggunakan statistik cluster, visualisasi PCA, boxplot, dan distribusi cluster untuk mengidentifikasi pola anomali di berbagai model *unsupervised learning*. 
 
+Dataset berisi flow-level metrics seperti :`dt`,`dur`,`tot_dur`,`pktrate`,`port_no`,`rx_kbps`,`tot_kbps`. Sebagian fitur ditemukan ada nilai 0/tidak informatif, ada nilai negatif dan tidak memiliki label. Karena itu, seluruh proses disesuaikan agar cocok untuk pendekatan *unsupervised learning*
+
 ## 🚀 Tujuan
 - Mendeteksi anomali (*traffic abnormal*) pada jaringan IoT menggunakan *unsupervised learning*.
 - Mengelompokan traffic IoT menjadi normal dan anomali tanpa menggunakan label.
