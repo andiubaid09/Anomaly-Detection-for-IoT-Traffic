@@ -11,3 +11,16 @@ df.head(5)
 df.describe()
 df.drop(columns='Unnamed: 0', inplace=True)
 df.head(2)
+df.columns
+
+Features = ['dt','dur', 'tot_dur','pktrate','port_no','rx_kbps','tot_kbps']
+X = df[Features]
+
+# Menghapus kolom negatif
+kolom_negatif = ['dt','dur','tot_dur']
+X = X[(X[kolom_negatif]> 0 ).all(axis=1)]
+X = X.reset_index(drop=True)
+
+# Menyamakan index df dengan index X
+df = df.loc[X.index]
+df = df.reset_index(drop=True)
