@@ -15,9 +15,11 @@ idx = np.random.choice(len(X_scaler), size=sample_size, replace=False)
 X_sample = X_scaler[idx].astype(np.float32)
 labels_sample = cluster_labels[idx]
 
+#Evaluasi silhoette score
 sil = silhouette_score(X_sample, labels_sample)
 print("Silhoutte Score :", sil)
 
+#Evaluasi davies_bouldin_score
 dbi = davies_bouldin_score(X_sample, labels_sample)
 print("Davies_Bouldin_Score:", dbi)
 
@@ -39,3 +41,35 @@ ax = fig.add_subplot(111, projection='3d')
 ax.scatter(X_pca3[:,0], X_pca3[:,1], X_pca3[:,2], c=cluster_labels, s=2)
 plt.title("PCA 3D Clustering")
 plt.show()
+
+#Cluster terhadap pktrate
+plt.figure(figsize=(7,5))
+sns.boxplot(data=df, x='cluster', y='pktrate')
+plt.show()
+
+df.groupby('cluster').size()
+
+#Jumlah Data perCluster
+counts = df['cluster'].value_counts().sort_index()
+
+plt.figure(figsize=(6,4))
+plt.bar(counts.index.astype(str), counts.values)
+plt.xlabel('Cluster')
+plt.ylabel('Count')
+plt.title('Jumlah Data Per Cluster')
+plt.show()
+
+#Evaluasi pairwise_distances
+model = kmeans_pipeline.named_steps['kmeans']
+
+closest, distances = pairwise_distances_argmin_min(model.cluster_centers_, X_scaler)
+distances[:10]
+
+#Visualisasi features terhadap cluster
+for col in X.columns:
+    plt.figure(figsize=(6,4))
+    sns.boxplot(data=df, x='cluster', y=col)
+    plt.title(f'{col} Distribution by Cluster')
+    plt.show()
+
+
