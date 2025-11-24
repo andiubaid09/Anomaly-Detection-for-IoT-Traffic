@@ -24,3 +24,6 @@ X = X.reset_index(drop=True)
 # Menyamakan index df dengan index X
 df = df.loc[X.index]
 df = df.reset_index(drop=True)
+X.describe()
+
+X.isnull().sum()
