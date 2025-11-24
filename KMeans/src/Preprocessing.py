@@ -1,7 +1,6 @@
 from google.colab import drive
 import pandas as pd
 from sklearn.pipeline import Pipeline
-from sklearn.cluster import KMeans
 
 drive.mount("/content/drive")
 datasheet = "/content/drive/My Drive/Datasheet/DDoS/unlabeled_data.csv"
