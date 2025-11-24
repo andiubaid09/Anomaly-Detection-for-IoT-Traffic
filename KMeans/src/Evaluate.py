@@ -72,4 +72,5 @@ for col in X.columns:
     plt.title(f'{col} Distribution by Cluster')
     plt.show()
 
-
+joblib.dump(kmeans_pipeline, "kmeans_pipeline_model.pkl")
+files.download('kmeans_pipeline_model.pkl')
