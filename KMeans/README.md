@@ -36,10 +36,10 @@ Algoritma K-Means bekerja secara iteratif melalui empat langkah utama hingga cen
     - Jumlah iterasi maksimum yang telah ditentukan tercapai.
 
 
-Berikut adalah kelebihan XGBoost:
+Berikut adalah kelebihan dan kekurangan K-Means:
 |Kelebihan                                 |Keterangan                                    |
 |------------------------------------------|----------------------------------------------|
-|Cepat & Efisien                            |Bisa pararel, memanfaatkan CPU multi-core      |
+|Cepat & Efisien                            |K-Means relatif cepat, terutama untuk dataset besar, karena kompleksitasnya yang rendah ($O(t \cdot K \cdot n \cdot d)$ di mana *t* adalah jumlah iterasi, *n* adalah jumlah titik data, dan *d* adalah dimensi data)|
 |Akurasi Tinggi                             |Salah satu model top di kompetisi Kaggle       |
 |Regularisasi                               | Ada L1(Lasso) dan L2(Ridge) untuk mencegah overfitting|
 |Handle missing value                       |Secara otomatis, tanpa imputasi manual           |
