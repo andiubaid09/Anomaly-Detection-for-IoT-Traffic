@@ -23,9 +23,17 @@ Algoritma K-Means bekerja secara iteratif melalui empat langkah utama hingga cen
   - Pilih nilai K (jumlah cluster yang diinginkan)
   - Pilih K titik secara acak dari dataset sebagai centeroid awal. Metode pemilihan yang populer adalah K-Means++, yang memilih centeroid awal yang sudah terpisah satu sama lain untuk mempercepat konvergensi dan menghindari *local optima* yang buruk.
 2. Penugasan Cluster (Assignment Step / E-Step)
-  - Unuk setiap titik data dalam dataset, hitung jarak *Euclidean* antara titik tersebut dengan setiap *centroid*.
+  - Untuk setiap titik data dalam dataset, hitung jarak *Euclidean* antara titik tersebut dengan setiap *centroid*.
   - Titik data tersebut kemudian ditugaskan ke *cluster* yang *centroid-nya* memiliki jarak terdekat.
-3. 
+3. Pembaruan Centeroid (Update Step/M-Step)
+  - Setelah semua titik data ditugaskan, centeroid untuk setiap cluster dihitung ulang.
+  - Centeroid yang baru adalah rata-rata geometrik (mean) dari semua titik data yang saat ini ditugaskan ke cluster tersebut.
+4. Iterasi dan Konvergensi *(Iteration and Convergence)
+  - Langkah 2 (penugasan) dan langkah 3 (pembaruan) diulang secara bergantian.
+  - Proses berhenti ketika:
+    - Centeroid tidak lagi berubah posisinya.
+    - Keanggotaan cluster dari titik data tidak lagi berubah.
+    - Jumlah iterasi maksimum yang telah ditentukan tercapai.
 
 
 Berikut adalah kelebihan XGBoost:
