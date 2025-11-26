@@ -18,6 +18,16 @@ Berikut tujuan utama dari K-Means:
 
 Secara matematis, K-Means berupaya menimilkan *Within-Cluster Sum of Squares (WCSS)* , yaitu jumlah kuadrat jarak antara setiap titik dalam cluster dengan centeroid cluster tersebut.
 
+Algoritma K-Means bekerja secara iteratif melalui empat langkah utama hingga centeroid tidak lagi bergerak secara signifikan (konvergen).
+1. Inisialisasi (Initialization)
+  - Pilih nilai K (jumlah cluster yang diinginkan)
+  - Pilih K titik secara acak dari dataset sebagai centeroid awal. Metode pemilihan yang populer adalah K-Means++, yang memilih centeroid awal yang sudah terpisah satu sama lain untuk mempercepat konvergensi dan menghindari *local optima* yang buruk.
+2. Penugasan Cluster (Assignment Step / E-Step)
+  - Unuk setiap titik data dalam dataset, hitung jarak *Euclidean* antara titik tersebut dengan setiap *centroid*.
+  - Titik data tersebut kemudian ditugaskan ke *cluster* yang *centroid-nya* memiliki jarak terdekat.
+3. 
+
+
 Berikut adalah kelebihan XGBoost:
 |Kelebihan                                 |Keterangan                                    |
 |------------------------------------------|----------------------------------------------|
