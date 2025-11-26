@@ -67,15 +67,19 @@ Berikut adalah kelemahan K-Means:
 - Preprocessing yang dilakukan hanyalah menggunakan *StandardScaler*, serta menghapus nilai negatif pada nilai feature
 - Penghapusan nilai negatif tidak dapat dibungkus dengan `Pipeline`. Alasan utamanya adalah karena operasi tersebut bukanlah sebuah transformasi data standar dan biasanya melanggar aturan inti dari desain *machine learning* yang baik. Penghapusan kolom maupun nilai negatif bukan transformasi data, maka dari itu tidak dapat dibungkus dengan `Pipeline`.
 
-### 4. Optimasi Hyperparameter
-Dilakukan dengan **GridSearchCV** pada parameter utama XGBoost:
-- `n_estimators` → Jumlah pohon
-- `learning_rate` → Kecepatan belajar
-- `max_depth` → Kedalaman pohon
-- Hyperparameter menggunakan **GridSearchCV** ditemukan:
-  1. n_estimators = 200
-  2. learning_rate = 0.05
-  3. max_depth = 10
+### 4. Building Model K-Means
+Membangun model K-Means dilakukan dengan menentukan parameter yang diperlukan ada di K-Means. Berikut parameter yang dibuat serta diinisiasi:
+1. n_clusters = 2
+  - Jumlah cluster (K) yang diinginkan. Disini saya ingin membagi hanya 2 cluster yang ingin saya ketahui dari datasheet traffic IoT ini. Hal itu adalah *anomaly* dan normal traffic. Algoritma ini akan mencoba membagi data menjadi tepat 2 kelompok. Pemilihan nilai K ini sangat mempengaruhi hasil clustering.
+2. init = 'k-means++
+  - Metode inisialisasi centroid awal menggunakan k-means++ adalah praktik terbaik karena ia memilih centeroid awal yang sudah terpisah jauh satu sama lain. Tujuannya adalah mempercepat konvergensi dan menghindari hasil clustering yang buruk (local optima) yang mungkin terjadi jika centeroid dipilih secara acak.
+3. n_init = 50
+  - Jumlah percobaan inisialisasi yang berbeda. Menentukan berapa kali algoritma K-Means akan dijalankan dengan *centroid* awal yang berbeda-beda. Setelah 50 kali percobaan, *Scikit-learn* akan memilih hasil terbaik (yaitu, hasil dengan *Within-Cluster Sum of Squares (WCSS) terkecil). Nilai yang lebih tinggi meningkatkan peluan menemukan solusi global yang optimal.
+4. max_iter = 500
+  - Jumlah maksimum iterasi per percobaan. Batas atas berapa kali langkah penugasan *cluster* dan pembaruan *centroid* akan diulang dalam satu kali run K-Means. Proses akan berhenti jika konvergen (tidak ada perubahan *centroid*) atau setelah mencapai 500 iterasi.
+5. tol = 1e-5
+  - Toleransi konvergensi. Batasan numerik yang digunakan untuk menentukan kapan algoritma dianggap telah konvergen (berhenti). Jika perubahan WCSS antara dua iterasi berturut-turut kurang dari 10^-5, algoritma berhenti karena dianggap telah mencapai solusi stabil.
+6. algorithm = 'elkan'
 
 **Interpretasi Angka dari Hyperparameter**
 - n_estimators = 200, ini berarti model membuat 200 pohon (trees) secara bertahap. XGBoost membangun model secara aditif, satu pohon demi satu untuk memperbaiki kesalahan dari sebelumnya. Semakin banyak jumlah pohon, model bisa belajar pola lebih kompleks. Tapi, terlalu banyak pohon bisa menyebabkan overfitting (model terlalu meniru daa latih). Nilai 200 ini menunjukkan model punya kapasitas belajar tinggi, tapi masih dikontrol oleh *learning_rate* (0.05) agar tidak agresif.
