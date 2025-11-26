@@ -95,7 +95,13 @@ Dengan pengaturan ini, saya telah mengoptimalkan K-Means untuk kecepatan dan kua
 |-------------------------|---------------------------------------|-------------------------------------|
 |n_clusters             | Jumlah cluster (K) yang ingin dibentuk | Parameter yang mempengaruhi klastering. Ditentukan dengan Elbow, Silhouette dsb|
 |init                   | Metode inisialisasi centroid awal     | `k-means++` lebih stabil dan cepat; menghindari centroid awal buruk|
-
+|max_iter       | Iterasi maksimum per 1 run K-Means      | Default 300; iterasi berhenti jika sudah konvergen|
+|n_init         | Berapa kali K-Means diulang dengan centroid berbeda| Menghindari local optimum; memilih hasil terbaik|
+|tol            | Batas toleransi untuk konvergensi     | Semakin kecil lebih presisi tapi lebih lambat|
+|algorithm      | Algoritma perhitungan (`lloyd` atau `elkan`)|`elkan` lebih cepat pada data convex & rendah dimensi|
+|random_state   | Seed untuk random number generator  | Agar hasil konsisten dan reproducible|
+|verbose (opsional)| Menampilkan proses selama training| Berguna untuk debugging|
+|copy_x| Apakah data  X disalin sebelum diproses  | Biasanya tidak perlu diubah; default True|
 
 ---
 
