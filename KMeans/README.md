@@ -90,21 +90,12 @@ Dengan pengaturan ini, saya telah mengoptimalkan K-Means untuk kecepatan dan kua
 3. Stabilitas: penggunaan random_state=42 menjamin bahwa setiap kali melatih model ini, hasilnya akan sama yang krusial untuk pengujian dan perbandingan.
 
 
-**Parameter Penting pada XGBoostRegressor()**
+**Parameter Penting pada K-Means()**
 |Parameter                |  Fungsi                               | Dampak                              |
 |-------------------------|---------------------------------------|-------------------------------------|
-|n_estimators|Jumlah total pohon(boosting rounds)|Semakin banyak, model akan makin kompleks. Terlalu banyak bisa overfit jika *learning_rate* terlalu besar|
-|max_depth|Kedalaman maksimum setiap pohon|Nilai tinggi, membuat model bisa tangkap pola komples tapi resiko overfit|
-|learning_rate|Mengontrol seberapa besar pembaruan bobot tiap iterasi|Nilai kecil= belajar lambat tapi stabil; nilai besar= cepat tapi bisa overfit|
-|min_child_weight|Jumlah minimum "berat" (jumlah observasi) di satu leaf|Nilai besar, model lebih konservatif (mencegah overfit). Nilai kecil lebih sensitif terhadap noise|                       
-|min_split_loss|Minimum loss reduction untuk membuat split baru|Nilai tinggi hanya split kalau perbaikan signifikan untuk mencegah overfittin|
-|subsample|Proporsi sampel data yang digunakan tiap pohon|Meningkatkan generalisasi|
-|random_state|Seed untuk membuat hasil split tetap konsisten|Penting agar hasil reproducible|
-|colsample_bytree|Proporsi fitur yang digunakan tiap pohon|Misal 0.8 tiap pohon hanya pakai 80% fitur. Mencegah overfit dan mempercepat training|
-|reg_alpha (L1 regularization)|Menambahkan penalti terhadap nilai absolut bobot|Membuat model lebih sparse (fitur yang tidak penting diabaikan)|
-|reg_lambda (L2 regularization)|Penalti terhadap kuadrat bobot|Membuat model lebih stabil dan mengurangi overfitting|
-|scale_pos_weight|Untuk menangani data tidak seimbang (biasanya untuk klasifikasi)|Tidak begitu digunakan di regresi, tapi penting untuk imbalance class|
-|early_stopping_rounds|Berhenti otomatis jika tidak ada peningkatan dalam beberapa iterasi|Berguna untuk menghindari overfitting dan menghemat waktu|
+|n_clusters             | Jumlah cluster (K) yang ingin dibentuk | Parameter yang mempengaruhi klastering. Ditentukan dengan Elbow, Silhouette dsb|
+|init                   | Metode inisialisasi centroid awal     | `k-means++` lebih stabil dan cepat; menghindari centroid awal buruk|
+
 
 ---
 
