@@ -51,36 +51,21 @@ Berikut adalah kelemahan K-Means:
 |Sensitif terhadap inisilisasi        |Hasil akhir dapat bergantung pada pemilihan centroid awal (meskipun K-Means++ membantu mengurangi masalah ini)|
 |Asumsi bentuk cluster bulat|K-Means mengasumsikan bahwa cluster berbentuk bulat *(spherical* dan memiliki ukuran yang sama. Ini tidak bekerja dengan baik pada cluster dengan bentuk yang kompleks (seperti bentuk bulan sabit atau bentuk non-konveks lainnya)) |
 
-Kapan XGBoost digunakan? Gunakan XGBoost jika:
-1. Data tabular (CSV, excel, sensor, log, dsb)
-2. Data kecil-menengah (<1 juta baris), bisa juga menggunakan data besar namun akan berat di RAM
-3. Ingin prediksi cepat & akurat
 
-Kapan XGBoost tidak cocok untuk digunakan?
-1. Data image / teks mentah (mending menggunakan CNN)
-
-Kesimpulannya adalah XGBoost adalah algoritma machine learning berbasis ensemble yang sangat kuat, efisien, akurat dengan prinsip membangun banyak pohon keputusan secara bertahap untuk memperbaiki kesalahan dari model sebelumnya.
 
 ---
 
 ## 🚀 Fitur Utama
 
 ### 1. Arsitektur Pipeline
-- Seluruh preprocessing (encoding, scaling, ordinal) dan model dibungkus dalam `Pipeline`.
-- Menjamin data latih dan data baru diproses identik → mencegah *data leakage*.
+- Preprocessing seperti *StandardScaler* dan model dibungkus dalam `Pipeline`.
+- Menjamin data latih dan data baru diproses dengan split lalu melakukan preprocessing hanya dengan data latih, tujuannya adalah untuk mencegah *data leakage*.
 
-### 2. Transformasi Target
-- Target `price` ditransformasi dengan `np.log1p` saat training.
-- Hasil prediksi dikembalikan ke skala asli dengan `np.expm1`.
-- Membantu model menghadapi distribusi harga yang sangat bervariasi.
-
-### 3. Preprocessing Fitur
-
-| Jenis Fitur              | Contoh               | Teknik Transformasi  |
-|---------------------------|----------------------|----------------------|
-| **Kategorikal Ordinal**  | `class` (Economy/Business) | `OrdinalEncoder` |
-| **Kategorikal Nominal**  | `source_city`, `departure_time`, `destination_city`,`stops`, `arrival_time` | `OneHotEncoder` |
-| **Numerik**              | `days_left` | `StandardScaler` |
+### 3. Preprocessing Fitur (KRITIS)
+- Preprocessing dilakukan hanya pada data latih yang telah di split sebelumnya agar menghindari kebocoran data.
+- Seperti yang dibahas sebelumnya, K-Means menggunakan jarak *Euclidean*. Oleh karena itu, *StandardScaler* atau *Min-Max Scaler* wajib digunakan untuk memastikan semua fitur berkontribusi secara adil pada perhitungan jarak, menhindari dominasi fitur dengan skala yang lebih besar.
+- Preprocessing yang dilakukan hanyalah menggunakan *StandardScaler*, serta menghapus nilai negatif pada nilai feature
+- Penghapusan nilai negatif tidak dapat dibungkus dengan `Pipeline`. Alasan utamanya adalah karena operasi tersebut bukanlah sebuah transformasi data standar dan biasanya melanggar aturan inti dari desain *machine learning* yang baik. Penghapusan kolom maupun nilai negatif bukan transformasi data, maka dari itu tidak dapat dibungkus dengan `Pipeline`.
 
 ### 4. Optimasi Hyperparameter
 Dilakukan dengan **GridSearchCV** pada parameter utama XGBoost:
