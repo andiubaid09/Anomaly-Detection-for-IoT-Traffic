@@ -1,4 +1,4 @@
-# 🌳✨ Prediksi Harga Tiket Pesawat dengan XGBoost (Extreme Gradient Boosting)
+# Clustering Anomaly Traffic IoT Menggunakan KMeans
 
 ## 📝 Deskripsi Proyek
 Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pesawat berdasarkan berbagai fitur penerbangan. Model dikembangkan menggunakan **Scikit-learn Pipeline** dengan **XGBoost Regressor** sebagai model utama.  
