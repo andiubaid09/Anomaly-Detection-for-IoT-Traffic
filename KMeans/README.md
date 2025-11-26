@@ -107,11 +107,16 @@ Dengan pengaturan ini, saya telah mengoptimalkan K-Means untuk kecepatan dan kua
 
 ## 📈 Hasil Kinerja (Data Uji)
 
-| Metrik | Nilai | Interpretasi |
-|--------|-------|--------------|
-| **R-squared (R²)** | 0.9552 | Model menjelaskan >95% variasi harga tiket |
-| **MAE** | 2761.84| Rata-rata selisih absolut antara prediksi dan nilai sebenarnnya|
-| **RMSE** | 4803.60 | Akar dari rata-rata kuadrat error, berapa kesalahan prediksi model |
+Menilai model menggunakan 3 metrik utama dalam proyek repository ini, metrik yang digunakan yaitu:
+1. Silhoutte Score, mengukur seberapa baik objek berada di dalam clusternya dibandingkan cluster lain.
+2. Davies-Bouldin Score (DBI), mengukur rata-rata kesamaan antar cluster. DBI memperhitungkan jarak antar centroid dan sebaran tiap cluster. Mirip kebalikan dari silhoutte, semakin kecil semakin baik.
+3. Pairwise_distances_argmin_min, ini bukan skor tapi fungsi untuk menghitung jarak tiap titik ke centroid terdekat. Biasanya mengembalikan indices -> index cluster terdekat dan distances -> jarak minimum tiap titik ke centroidnya. Memiliki kegunaan untuk melihat seberapa dekat titik ke centroid cluster menggunakan compactness. Bisa dipakai untuk mencari outlier (distance besar) visualisasi kualitas cluster dan menghitung averange distance to centroid.
+
+| Metrik | Nilai |
+|--------|-------|
+| **Silhoutte Score** | 0.849 | 
+| **Bouldin_Score** | 0.503|
+| **Pairwise Distances_argmin_min** | array([0.246, 0.045]) |
 
 **Interpretasi Angka**
 - RMSE = 4803.60, merupakan nilai untuk mengukur besar kesalahan prediksi, tapi lebih menekankan pada error besar (karena dikuadratkan). Mengukur akar dari rata-rata error kuartas, sehingga memberikan penalt lebih besar pada error yang besar dan mencerminkan "variabilitas" error prediksi. Nilai 4803.60 menunjukkan rata-rata penyimpangan prediksi sekitar 4.8 ribu unit dari nilai sebenarnya. Karena RMSE > MAE, ini berarti ada beberapa prediksi yang meleset cukup jauh (outlier error). Namun, dengan R2 setinggi 95%, outlier ini tidak signifikan terhadap kinerja keseluruhan model. RMSE ini tetap tergolong rendah dan konsisten, menandakan prediksi model sangat stabil.
