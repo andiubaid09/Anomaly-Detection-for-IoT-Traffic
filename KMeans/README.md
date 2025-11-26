@@ -80,13 +80,15 @@ Membangun model K-Means dilakukan dengan menentukan parameter yang diperlukan ad
 5. tol = 1e-5
   - Toleransi konvergensi. Batasan numerik yang digunakan untuk menentukan kapan algoritma dianggap telah konvergen (berhenti). Jika perubahan WCSS antara dua iterasi berturut-turut kurang dari 10^-5, algoritma berhenti karena dianggap telah mencapai solusi stabil.
 6. algorithm = 'elkan'
+  - Algoritma yang digunakan untuk penghitungan jarak. `elkan` adalah varian yang lebih efisien dari algoritma K-Means standar. Ini menggunakan ketidaksetaraan segitiga *(triangle inequality)* untuk menghindari perhitungan jarak Euclidean yang tidak perlu, sehingga dapat mempercepat proses *clustering*, terutama pada data dengan dimensi tinggi.
+7. random_state = 42
+  - Seed untuk generator angka acak. Digunakan untuk memastikan hasil yang dapat direplikasi *(reproducible)*. Karena inisialisasi *centroid* melibatkan keacakan (meskipun menggunakan k-means++), menetapkan random_state memastikan bahwa akan mendapatkan hasil yang sama setiap kali anda menjalankan kode dengan paramter yang sama.
 
-**Interpretasi Angka dari Hyperparameter**
-- n_estimators = 200, ini berarti model membuat 200 pohon (trees) secara bertahap. XGBoost membangun model secara aditif, satu pohon demi satu untuk memperbaiki kesalahan dari sebelumnya. Semakin banyak jumlah pohon, model bisa belajar pola lebih kompleks. Tapi, terlalu banyak pohon bisa menyebabkan overfitting (model terlalu meniru daa latih). Nilai 200 ini menunjukkan model punya kapasitas belajar tinggi, tapi masih dikontrol oleh *learning_rate* (0.05) agar tidak agresif.
-- learning_rate = 0.05, parameter ini menentukan seberapa besar langkah pembelajaran yang diambil XGBoost setiap kali menambahkan pohon baru. Nilai 0.05 tergolong rendah dan hati-hati. Artinya setiap pohon hanya memperbaiki sedikit kesalahan dari sebelumnya. Kombinasi ini cocok jika punya n_estimators besar, karena setiap langkah kecil tapi jumlahnya banyak. Hasilnya menjadi stabil dan generalisasi lebih baik.
-- max_depth = 10, parameter ini mengontrol kedalaman maksimum tiap pohon. Dengan max_depth = 10, pohon bisa membagi data hingga 10 kali di setiap jalur keputusan. Artinya model kamu cukup kompleks, bisa menangkap interaksi antar fitur dengan baik. Tapi jika terlalu dalam, model bisa terlalu menyesuaikan diri dengan data latih dan terjadi overfitting. Sebaliknya, jika terlalu dangkal model terlalu sederhana yang bisa menyebabkan underfitting.
+Dengan pengaturan ini, saya telah mengoptimalkan K-Means untuk kecepatan dan kualitas hasil:
+1. Kualitas: penggunaan init='k-means++' dan n_init=50 sangat meningkatkan peluan untuk mendapatkan clustering yang optimal.
+2. Kecepatan: penggunaan *algorithm*= 'elkan' akan mempercepat waktu komputasi dibandingkan algoritma K-Means standar, terutama pada dataset yang besar.
+3. Stabilitas: penggunaan random_state=42 menjamin bahwa setiap kali melatih model ini, hasilnya akan sama yang krusial untuk pengujian dan perbandingan.
 
-Dengan kombinasi ini, model berada di titik keseimbangan bagus, belajar secara perlahan (learning_rate rendah), cukup banyak pohon untuk menangkap pola (n_estimators tinggi) dan pohon cukup dalam untuk mengenali hubungan kompleks antar fitur (max_depth). Ini tipikal konfigurasi yang kuat dan stabil untuk dataset tabular seperti prediksi harga, waktu, atau penjualan dan sangat mungkin menjelaskan mengapa performanya bisa sangat tinggi.
 
 **Parameter Penting pada XGBoostRegressor()**
 |Parameter                |  Fungsi                               | Dampak                              |
