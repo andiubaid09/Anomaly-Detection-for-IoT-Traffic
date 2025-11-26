@@ -144,73 +144,26 @@ Secara keseluruhan, kombinasi ketiga metrik ini memberikan gambaran yang konsist
 ---
 
 ## 📊 Visualisasi Data
-### 1. Prediksi vs Nilai Aktual
-![Prediksi vs Harga Nilai Aktual](Assets/Prediksi%20vs%20Nilai%20Aktual.png)<br>
-Visualisasi di atas merupakan Scatter Plot Prediksi vs Nilai Aktual, visualisasi membantu untuk mengerti perilaku model secara intuitif hal yang sering tidak terlihat hanya dari angka metrik. Plot ini menunjukkan seberapa dekat hasil prediksi dengan kenyataan. Semacam uji keakuratan visual, melengkapi metrik Numerik(MAE, RMSE, R2). Jika R2 mendekati 1 dan titik berjejer di sekitar garis merah -> Model bagus.
-Interpretasi hasil:
-- Kalau titik-titik biru banyak yang menempel di garis merah, berarti model prediksi sangat akurat.
-- Titik yang jauh dari garis merah = error prediksi yang lebih besar
-- Semakin rapat titik ke garis merah -> semakin tinggi nilai R2 (koefisien determinasi)
-- Menambahkan nilai R2 di plot, jadi pembaca bisa langsung lihat seberapa baik model menjelaskan variasi data.
+### 1. PCA 2D Clustering
+![PCA 2D](Assets/PCA%202D%20Clustering.png)<br>
+PCA (Principal Component Analysis) adalah teknik reduksi dimensi yang mengubah data berdimensi tinggi menjadi beberapa komponene baru yang saling ortogonal (tidak berkorelasi), menyimpan variasi paling besar pada data dan memampatkan informasi data ke dalam dimensi lebih sedikit tanpa kehilangan struktur penting. Pada visualisasi ini 2D berarti mengompresi data menjadi 2 komponen utama PC1 -> menjelaskan variasi terbesar dan PC2 -> menjelaskan variasi terbesar kedua. Fungsi utamanya adalah untuk visualisasi cluster, melihat separasi antar kelas, memeriksa K-Means memilih cluster yang benar dan menemukan pola yang tidak terlihat dalam data asli
 
-### 2. Distribusi Residual Error
-![Distribusi Residual Error](Assets/Distribusi%20Residual%20Error.png)<br>
-Residual adalah selisih antara nilai aktual dan nilai prediksi. Artinya, seberapa jauh prediksi model dari nilai sebenarnya. Tujuannya adalah mengecek apakah error model terdistribusi secara normal (simetris, tanpa bias besar).
-Elemen visualisasi:
-1. Histogram (batang warna coral/oranye)
- - Menunjukkan sebaran nilai residual.
- - Semakin tinggi batang -> semakin banyak residual yang nilainya berada pada rentang tersebut.
- - Kalau batang lebih banyak di sekitar 0 -> berarti error kecil dan model cukup baik.
-2. Kurva KDE (garis halus melengkung)
- - Fungsinya membantu melihat bentuk distribusi residual. Mirip dari histogram
- - Kalau kurvanya simetris di sekitar 0 -> model tidak bias
- - Kalau melenceng ke kiri/kanan -> model bias (overestimate atau underestimate)
-3. Garis Tegak Lurus Merah Putus-Putus(axvline)
- - Titik acuan di 0 (residual = 0)
- - Kalau semua residual jatuh tepat di garis ini, model prediksi = nilai aktual(perfect).
- - Tapi realitannya residual pasti menyebar di sekitar garis ini
- - Garis merah ini dipakai untuk menilai: apakah distribusi residual condong ke kiri/kanan dan seberapa jauh penyebarannya dari nol.
+### 2. PCA 3D Clustering
+![PCA 3D Clustering](Assets/PCA%203D%20Clustering.png)<br>
+PCA 3D sama persis idenya, tetapi ini menyimpan tiga komponen utama yaitu PC1, PC2 dan PC3. Setiap titik data sekarang memiliki koordinat, fungsi utamanya melakukan visualisasi 3D untuk dataset yang kompleks dan PCA 3D membantu saat. Data terlalu kompleks untuk terlihat di 2D, cluster saling tumpang tindih jika hanya dilihat dari 2 komponen dan banyak variasi data muncul pada komponen ke 3.
 
-Model yang baik biasanya menghasilkan residual:
-- Tersebar di sekitar nol,
-- Tidak membentuk pola tertentu,
-- Tidak terlalu menyebar jauh
-Jadi, dengan grafik ini, kita bisa menilai model sudah cukup baik atau masih perlu perbaikan (dengan feature engineering atau tuning parameter)
-
-Interpretasi hasil:
-- Distribusi simetris & berpusat di 0 -> model cenderung tidak bias, prediksi mendekati nilai aktual.
-- Distribusi condong ke kiri atau kanan -> ada bias, misalnya model sering overestimate (Residual Negatif atau prediksi terlalu tinggi) atau underestimate (Residual Positif atau prediksi terlalu rendah).
-- Distribusi menyebar lebar -> Error prediksi besar, model kurang akurat.
-- Distribusi sempit di sekitar 0 -> Prediksi model sangat dekat dengan nilai aktual, model bagus
-
-### 3. Residual vs Nilai Prediksi
-![Residual vs Nilai Prediksi](Assets/Residual%20vs%20Nilai%20Prediksi.png)<br>
-Visualisasi ini menampilkan Residual Plot (Residual vs Predicted Values). Tujuannya untuk mengecek apakah error model terdistribusi secara acak atau ada pola tertentu. Membantu mendeteksi, bias sistematis (model selalu meleset ke satu arah), Heteroskedatisitas (variasi error meningkat pada nilai prediksi besar) dan Nonlinearitas (model tidak cukup fleksibel untuk pola data). Ini adalah visualisasi evaluasi model regresi yang digunakan untuk menilai kualitas prediksi dengan melihat pola error(residual) terhadap nilai prediksi.
-
-Elemen visualisasi:
-1. Scatterplot titik hijau (prediksi vs residual)
- - Sumbu X = harga prediksi (y_pred) -> Nilai yang diperkirakan model.
- - Sumbu Y = residual (y_test - y_pred) -> selisih antara nilai aktual dan prediksi
- - Setiap titik = satu data.
-2. Garis horizontal merah putus-putus (residual = 0)
- - Menjadi titik acuan:
-  - Kalau residual = 0 -> prediksi tepat sama dengan aktual
-  - Kalau titik di atas garis -> model underestimate (prediksi terlalu rendah).
-  - Kalau titik di bawah garis -> model overestimate (prediksi terlalu tinggi).
-
-Penyebaran acak di sekitar garis 0 -> artinya error tidak bergantung pada nilai prediksi berarti model cukup baik. Pola tertentu (misalnya residual makin besar saat harga makin tinggi)-> ada masalah:
- - Heteroskedastisitas : error semakin besar saat nilai meningkat -> model tidak stabil di data besar
- - Nonlinearitas: Model tidak cukup fleksibel menangkap pola -> hubungan non linear.
- - Bias Sistematis: Model cenderung selalu overestimate atau underestimate.
-
-Interpretasi hasil:
- - Kalau titik-titik terlihat acak, menyebar merata di sekitar 0 -> model sudah oke
- - Kalau titik cenderung membentuk pola busur/ kurva -> mungkin model perlu metode lain (misalnya boosting atau menambah fitur)
- - Kalau sebaran makin melebar di kanan (harga tinggi) -> model kesulitan memprediksi harga 
+### 3. Jumlah Data Percluster
+![Jumlah data percluster](Assets/Jumlah%20Data%20PerCluster.png)<br>
+Visualisasi ini menampilkan jumlah data percluster, dapat dilihat pada cluster 0 memiliki dominan hampir 99% data yang berada di cluster 0, sedangkan cluster 1 hanya 1% dari jumlah data. Menunjukkan cluster 0 sangat dominan dalam datasheet 5 juta rows ini.
  
-### 5. Fitur Penting (Gini Importance)
-![Gini Importance](Assets/Top%2015%20Feature%20XGBoost.png)<br>
-Visualisasi ini adalah Feature Importance Plot dari XGBoost, menunjukkan fitur yang paling berpengaruh terhadap prediksi harga tiket dan membantu memahami faktor utama yang mempengaruhi model, misalnya rute, maskapai, durasi, atau waktu keberangkatan
+### 5. Cluster 0 vs 1 Berdasarkan pktrate
+![Perbandingan cluster 0 vs 1 berdasarkan pktrate](Assets/Cluster%200%20vs%201%20base%20features%20pktrate.png)<br>
+Visualisasi ini menampilkan boxplot cluster 0 vs cluster 1, dimana nilai median pada cluster 0 lebih rendah dibanding cluster 1. Cluster 0 menunjukkan box yang lebih besar menandakan banyak variasi di dalamnya, cluster 0 memiliki median di angka rentang antara 0.00010 - 0.00015. Ini seperti ciri-ciri dari traffic normal/stabil. Sedangkan cluster 1 memiliki nilai median di rentang sekitar 0.00020, nilai Q3 berada paling atas dibanding nilai Q1 pada cluster 0.
+
+## 6. Distribusi `dur` Berdasarkan Cluster
+![Distribusi fitur dur berdasarkan cluster](Assets/Distribusi%20dur%20berdasarkan%20cluster.png)
+
+## 7. 
 
 ## 🛠️ Cara Menggunakan
 
