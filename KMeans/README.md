@@ -46,11 +46,10 @@ Berikut adalah kelebihan K-Means:
 Berikut adalah kelemahan K-Means:
 |Kelemahan                                 |Keterangan                                    |
 |------------------------------------------|----------------------------------------------|
-|Membutuhkan K yang ditentukan     ||
-|Waktu training lama                        |Banyak hyperparameter yang diuji dan setiap iterasi menghitung gradien & hessian|
-|Sulit diinterpretasi                       |XGBoost terdiri dari ratusan pohon kecil, interpretasi 'aturan' yang diambil jadi kompleks|
-|Banyak hyperparameter (kompleks tuning)    |Parameter banyak dan kompleks untuk di tuning     |
-|Tidak cocok untuk data tidak terstruktur   |Hanya cocok dengan data tabular, tidak untuk image, audio dst|
+|Membutuhkan K yang ditentukan     |Nilai *K* harus ditentukan sebelum menjalankan algoritma. Pemilihan *K* yang salah dapat menghasilkan hasil *clustering* yang buruk (metode seperti *Elbow Method* atau *Silhouette Score* digunakan untuk menentukan K optimal)|
+|Sensitif terhadap data yang memiliki outlier|Karena centeroid adalah nilai rata-rata, outliers dapat menarik centeroid secara signifikan, mendistorsi bentuk cluster yang sebenarnya|
+|Sensitif terhadap inisilisasi        |Hasil akhir dapat bergantung pada pemilihan centroid awal (meskipun K-Means++ membantu mengurangi masalah ini)|
+|Asumsi bentuk cluster bulat|K-Means mengasumsikan bahwa cluster berbentuk bulat *(spherical* dan memiliki ukuran yang sama. Ini tidak bekerja dengan baik pada cluster dengan bentuk yang kompleks (seperti bentuk bulan sabit atau bentuk non-konveks lainnya)) |
 
 Kapan XGBoost digunakan? Gunakan XGBoost jika:
 1. Data tabular (CSV, excel, sensor, log, dsb)
