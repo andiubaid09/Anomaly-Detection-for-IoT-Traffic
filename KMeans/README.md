@@ -52,7 +52,6 @@ Berikut adalah kelemahan K-Means:
 |Asumsi bentuk cluster bulat|K-Means mengasumsikan bahwa cluster berbentuk bulat *(spherical* dan memiliki ukuran yang sama. Ini tidak bekerja dengan baik pada cluster dengan bentuk yang kompleks (seperti bentuk bulan sabit atau bentuk non-konveks lainnya)) |
 
 
-
 ---
 
 ## 🚀 Fitur Utama
@@ -119,11 +118,28 @@ Menilai model menggunakan 3 metrik utama dalam proyek repository ini, metrik yan
 | **Pairwise Distances_argmin_min** | array([0.246, 0.045]) |
 
 **Interpretasi Angka**
-- RMSE = 4803.60, merupakan nilai untuk mengukur besar kesalahan prediksi, tapi lebih menekankan pada error besar (karena dikuadratkan). Mengukur akar dari rata-rata error kuartas, sehingga memberikan penalt lebih besar pada error yang besar dan mencerminkan "variabilitas" error prediksi. Nilai 4803.60 menunjukkan rata-rata penyimpangan prediksi sekitar 4.8 ribu unit dari nilai sebenarnya. Karena RMSE > MAE, ini berarti ada beberapa prediksi yang meleset cukup jauh (outlier error). Namun, dengan R2 setinggi 95%, outlier ini tidak signifikan terhadap kinerja keseluruhan model. RMSE ini tetap tergolong rendah dan konsisten, menandakan prediksi model sangat stabil.
-- MAE = 2761.84 menunjukkan rata-rata rata-rata jarak absolut antara nilai prediksi dan nilai aktual. rata-rata model salah sekitar 2.761 satuan dari nilai aslinya. MAE lebih mudah dimaknai secara "nyata" karena satuannya sama dengan target aslinya. Nilai yang relatif kecil terhadap skala data berarti model memliki presisi tinggi dan stabil terhadap outlier. Namun, karena tidak mengkuadratkan error, MAE tidak terlalu sensitif terhadap error besar.
-- R2 = 0.9552, artinya 95.52% model XGBoost mampu menjelaskan variasi nilai target (y) pada data uji. Dengan kata lain, hanya 4.48% variasi yang tidak dapat dijelaskan model. Nilai ini sangat tinggi, menandakan model sudah sangat akurat dalam memprediksi target. XGBoost berhasil menangkap hubungan non-linear dan interaksi antar fitur dengan baik (sesuai sifat boosting-nya). Hasil ini jauh lebih baik dibandingkan regresi linear biasa. yang umumnya memiliki R2 jauh di bawah 0.9 pada data komples.
+1. Silhouette score = 0.849,
+  - Nilai 0.849 mengindikasikan bahwa struktur klaster yang terbentuk sangat kuat dan terpisah dengan jelas.
+  - Secara teoritis, nilai silhouette di atas 0.80 merupakan indikasi bahwa setiap objek memiliki tingkat kesesuaian yang tinggi terhadap klusternya sendiri dan memiliki jarak yang signifikan dari kluster lainnya.
+  - Dengan demikian, klaster yang dihasilkan memiliki kohesi internal yang kuat *(intra-cluster cohension)* serta separasi antar klaster yang optimal *(inter-cluster separation)*.
+  - Dalam konteks data ini yang memiliki +5 juta *rows* berukuran sangat besar, skor setinggi ini menegaskan bahwa model berhasil menemukan batas klaster yang secara alami memang terbentuk pada data tersebut.
 
-Berdasarkan hasil evaluasi, model XGBoost yang telah dioptimasi melalui hyperparameter tuning menunjukkan performa prediksi yang sangat baik. Nilai koefisien determinasi (R2) sebesar 0.9552 mengindikasikan bahwa model mampu menjelaskan sekitar 95.52% variasi data target. Nilai MAE sebesar 2761.84 dan RMSE sebesar 4803.60 menunjukkan bahwa rata-rata kesalahan prediksi masih berada pada tingkat yang relatif rendah terhadap skala data. Perbedaan antara MAE dan RMSE yang tidak terlalu besar menandakan bahwa model stabil dan tidak terlalu sensitif terhadap outlier. Secara keseluruhan, model XGBoost ini memiliki kemampuan generalisasi yang kuat, efisien dalam menangani kompleksitas data, serta memberikan prediksi dengan tingkat kesalahan yang rendah.
+2. Davies-Bouldin Score = 0.503,
+  - Semakin memperkuat temuan bahwa kualitas model berada pada kategori sangat baik.
+  - Davies Bouldin index mengukur seberapa mirip suatu cluster dengan cluster lain berdasarkan rasio antara sebaran internal dan jarak antar centroid.
+  - Nilai DBI yang mendekati nol mencerminkan bahwa setiap cluster memiliki disperensi internal yang relatif kecil sekaligus berada pada jarak yang cukup jauh dari cluster lainnya.
+  - Nilai 0.503 tergolong rendah dan menunjukkan bahwa bahwa struktur kluster yang dihasilkan efisien, tidak saling tumpang tindih dan centroid mampu mempresentasikan anggota klusternya dengan baik.
+
+3. pairwise_distances_argmin_min = ([0.246, 0.045])
+  - Nilai tersebut adalah jarak centroid yang memberikan informasi tentang tingkat kekompakan masing-masing cluster.
+  - Rata-rata jarak titik terhadap centroid sebesar [0.246, 0.045] menunjukkan kedua cluster padat dengan cluster 1 memiliki struktur yang paling kompak.
+  - Cluster 1 = 0.045, merupakan cluster yang sangat padat *(super tight)*
+  - Cluster 0 = 0.246, masih padat, tapi sedikit lebih menyebar dibanding cluster 1.
+  - Cluster dengan nilai rata-rata jarak 0.045 menunjukkan kompaktitas yang sangat tingi, menandakan bahwa anggota cluster tersebut hampir seluruhnya terkonsentrasi dekat dengan centroid.
+  - Ini merupakan indikator cluster yang sangat homogen
+  - Cluster dengan jarak rata-rata 0.246 masih tergolong baik, namun menunjukkan bahwa cluster tersebut memiliki dispersi sedikit lebih besar dibandingkan cluster pertama yang dapat disebabkan oleh variasi data yang lebih tinggi atau distribusi yang lebih lebar. Perbedaan ini tidak mengindikasikan kelemahan, melainkan karakteristik alami dari data yang tergabung pada cluster tersebut.
+
+Secara keseluruhan, kombinasi ketiga metrik ini memberikan gambaran yang konsisten bahwa model K-Means kamu tidak hanya stabil, tetapi juga mampu membentuk klaster dengan kualitas yang sangat tinggi meskipun diterapkan pada dataset berukuran lebih dari 5 juta entri. Hasil ini menunjukkan bahwa pemilihan jumlah cluster yang kamu gunakan tepat, inisialisasi centroid efektif dan struktur alaminya memang mendukung pembentukan klaster yang jelas. Temuan ini bisa menjadi poin kuat dalam analisis akademik maupun penulisan ilmiah karena mencerminkan performa model yang robust pada skala data besar.
 
 ---
 
