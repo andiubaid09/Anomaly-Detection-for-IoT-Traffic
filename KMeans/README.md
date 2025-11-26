@@ -9,15 +9,14 @@ Untuk meningkatkan performa model pada data harga yang memiliki skala yang berbe
 
 ---
 
-## 📖 Penjelasan Tentang XGBoost
-XGBoost adalah algoritma ensemble boosting berbasis pohon keputusan (Decision Tree) yang sangat cepat, akurat, dan efisien. Dikembangkan untuk mengatasi kekurangan *Gradient Boosting Machine* (GBM) klasik dengan optimasi pararel, reguralisasi, dan kontrol model. Nama XGBoost berasal dari *Extreme Gradient Boosting* karena performanya super ekstrem. Hampir semua pemenang Kaggle Competition (2016-2020) pakai XGBoost. Jika dianalogikan, Decision Tree itu dasar, RandomForest itu rame-rame, tapi XGBoost itu cerdas dan disiplin.
+## 📖 Penjelasan Tentang KMeans
+K-Means merupakan algoritma *unsupervised learning* yang berbasis *centeroid* yang bertujuan untuk membagi *N* yang paling populer dan sering digunakan dalam *unsupervised learning*. K-Means memiliki cara kerja dengan membagi data ke dalam K kelompok *(clusters)* berdasarkan kemiripan fitur, dimana K adalah parameter yang telah ditentukan sebelumnya oleh pengguna. Setiap, cluster direpresentasikan oleh sebuah *centeroid*, yaitu titik rata-rata dari seluruh data di dalam cluster tersebut. 
 
-Bagaimana cara kerja dari XGBoost? Jika memiliki model sederhana (misalnya Decision Tree kecil). Model itu tidak sempurna, masih banyak error. XGBoost akan melakukan:
-1. Mulai prediksi awal, biasanya dari rata-rata nilai target(untuk regresi) atau probabilitas awal (untuk klasifikasi).
-2. Hitung error (Residual), Error = selisih antara prediksi dan nilai sebenarnya.
-3. Bangun pohon baru, pohon kecil (weak learner) dibuat untuk memperbaiki error dari model sebelumnya. Misal model sebelumnya kurang bagus di data tertentu, maka pohon baru fokus disana.
-4. Gabungkan semua pohon, dalam model akhir adalah penjumlahan dari banyak pohon kecil : F(x)=F0​(x)+η⋅f1​(x)+η⋅f2​(x)+…+η⋅fn​(x), dimana η adalah learning rate.
-5. Ulangi hingga error minimum, pohon akan terus ditambah sampai model cukup bagus atau tidak ada perbaikan berarti.
+Berikut tujuan utama dari K-Means:
+1. Meminimalkan jarak antara titik data dan centeroid (pusat) cluster mereka
+2. Menimalkan jarak antara centeroid dari cluster yang berbeda
+
+Secara matematis, K-Means berupaya menimilkan *Within-Cluster Sum of Squares (WCSS)* , yaitu jumlah kuadrat jarak antara setiap titik dalam cluster dengan centeroid cluster tersebut.
 
 Berikut adalah kelebihan XGBoost:
 |Kelebihan                                 |Keterangan                                    |
