@@ -1,9 +1,11 @@
 # Clustering Anomaly Traffic IoT Menggunakan KMeans
 
 ## 📝 Deskripsi Proyek
-Proyek ini membangun model **Machine Learning** untuk memprediksi harga tiket pesawat berdasarkan berbagai fitur penerbangan. Model dikembangkan menggunakan **Scikit-learn Pipeline** dengan **XGBoost Regressor** sebagai model utama.  
+Proyek ini membangun model *unsupervised learning* **Machine Learning** untuk menemukan pola, struktur, dan hubungan tersembunyi dalam datasheet anomaly traffic IoT. Model dikembangkan menggunakan **Scikit-learn Pipeline** agar dapat digunakan lagi tanpa melakukan preprocessing terlebih dahulu lagi dengan **K-Means** sebagai model utama.  
 
-Untuk meningkatkan akurasi pada data harga yang memiliki distribusi miring (*skewed*), target variabel (`price`) ditransformasi secara logaritmik menggunakan **TransformedTargetRegressor (TTR)**.
+Untuk meningkatkan performa model pada data harga yang memiliki skala yang berbeda, fitur rentang nilai yang lebih besar dan kecil akan distandarisasi menggunakan *StandardScaler*. *StandardScaler* mengatasi masalah rentang skala yang berbeda dengan melakukan standarisasi. Standarisasi mengubah data sedemikian rupa sehingga fitur memiliki properti distribusi sebagai berikut:
+- Rata-rata ($\mu$): 0
+- Standar deviasi ($\sigma$): 1
 
 ---
 
