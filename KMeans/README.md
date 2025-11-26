@@ -28,7 +28,7 @@ Algoritma K-Means bekerja secara iteratif melalui empat langkah utama hingga cen
 3. Pembaruan Centeroid (Update Step/M-Step)
   - Setelah semua titik data ditugaskan, centeroid untuk setiap cluster dihitung ulang.
   - Centeroid yang baru adalah rata-rata geometrik (mean) dari semua titik data yang saat ini ditugaskan ke cluster tersebut.
-4. Iterasi dan Konvergensi *(Iteration and Convergence)
+4. Iterasi dan Konvergensi *(Iteration and Convergence)*
   - Langkah 2 (penugasan) dan langkah 3 (pembaruan) diulang secara bergantian.
   - Proses berhenti ketika:
     - Centeroid tidak lagi berubah posisinya.
@@ -36,20 +36,17 @@ Algoritma K-Means bekerja secara iteratif melalui empat langkah utama hingga cen
     - Jumlah iterasi maksimum yang telah ditentukan tercapai.
 
 
-Berikut adalah kelebihan dan kekurangan K-Means:
+Berikut adalah kelebihan K-Means:
 |Kelebihan                                 |Keterangan                                    |
 |------------------------------------------|----------------------------------------------|
 |Cepat & Efisien                            |K-Means relatif cepat, terutama untuk dataset besar, karena kompleksitasnya yang rendah ($O(t \cdot K \cdot n \cdot d)$ di mana *t* adalah jumlah iterasi, *n* adalah jumlah titik data, dan *d* adalah dimensi data)|
-|Akurasi Tinggi                             |Salah satu model top di kompetisi Kaggle       |
-|Regularisasi                               | Ada L1(Lasso) dan L2(Ridge) untuk mencegah overfitting|
-|Handle missing value                       |Secara otomatis, tanpa imputasi manual           |
-|Support banyak objective                   |Bisa regresi, klasifikasi, ranking, dsb          |
-|Feature Importances                        |Dapat menunjukkan fitur paling berpengaruh       |
+|Mudah Diimplementasikan                    |Konsepnya sederhana dan mudah dipahami       |
+|Skalabilitas                               |Bekerja dengan baik untuk dataset dengan jumlah data yang besar|
 
-Berikut adalah kelemahan XGBoost:
+Berikut adalah kelemahan K-Means:
 |Kelemahan                                 |Keterangan                                    |
 |------------------------------------------|----------------------------------------------|
-|Membutuhkan memori besar (RAM tinggi)     |XGBoost banyak membangun pohon dan menyimpan statistik untuk setiap node saat training|
+|Membutuhkan K yang ditentukan     ||
 |Waktu training lama                        |Banyak hyperparameter yang diuji dan setiap iterasi menghitung gradien & hessian|
 |Sulit diinterpretasi                       |XGBoost terdiri dari ratusan pohon kecil, interpretasi 'aturan' yang diambil jadi kompleks|
 |Banyak hyperparameter (kompleks tuning)    |Parameter banyak dan kompleks untuk di tuning     |
