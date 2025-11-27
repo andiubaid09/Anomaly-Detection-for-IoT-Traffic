@@ -163,7 +163,8 @@ Visualisasi ini menampilkan boxplot cluster 0 vs cluster 1, dimana nilai median 
 ## 6. Distribusi `dur` Berdasarkan Cluster
 ![Distribusi fitur dur berdasarkan cluster](Assets/Distribusi%20dur%20berdasarkan%20cluster.png)
 
-## 7. 
+## 7. Distribusi `pktrate` Berdasarkan Cluster
+![Distribusi pktrate](Assets/Distribusi%20pktrate%20berdasarkan%20cluster.png)
 
 ## 🛠️ Cara Menggunakan
 
