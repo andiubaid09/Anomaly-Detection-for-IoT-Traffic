@@ -160,6 +160,22 @@ Visualisasi ini menampilkan jumlah data percluster, dapat dilihat pada cluster 0
 ![Distribusi fitur dur berdasarkan cluster](Assets/Distribusi%20dur%20berdasarkan%20cluster.png)
 Visualisasi ini dalam grafik boxplot menampilkan distribusi fitur dur berdasarkan cluster. Sumbu X -> Cluster dan sumbu Y -> nilai dur. Kotak (box) menunjukkan interquartile range (IQR1= Q1 sampai Q3). Garis di dalam kotak merupakan median yaitu nilai tengah. Lalu Whisker (garis atas dan bawah) adalah batas nilai yang dianggap normal dan titik-titik di luar whisker adalah nilai outlier (nilai yang sangat jauh dari mayoritas data).
 
+Interpretasi untuk cluster 0
+  - Kotaknya sangat tipis, hampir seperti strip, artinya semua nilai dur berada sangat dekat satu sama lain/
+  - Median sangat kecil (mendekati 0).
+  - Whisker pendek, data sangat rapat,tidak bervariasi pada nilai di fitur dur ini.
+  - Outlier sedikit dan tidak terlalu tinggi
+
+Kesimpulan : Dur sangat kecil, stabil, konsisten tidak banyak variasi. Ini umumnya terlihat pada traffic normal atau traffic kecil yang homogen.
+
+Interpretasi untuk cluster 1
+  - Kotak box jauh lebih tinggi, menandakan durasi lebih bervariasi
+  - Median dur disekitar rentang 2 detik
+  - IQR cukup besar (sekitar 1,5 - 3 detik)
+  - Ada banyak outlier hingga dur 40 detik. Artinya beberapa flow sangat panjang durasinya.
+
+Kesimpulan : DIstribusi dur di cluster 1 jauh lebih besar, bervariasi dan memiliki banyak outlier. Cluster ini bisa berisi trafik, flow dengan durasi panjang, trafik streaming/long connection dan mirip ciri trafik anomali
+
 ## 6. Distribusi `pktrate` Berdasarkan Cluster
 ![Distribusi pktrate](Assets/Distribusi%20pktrate%20berdasarkan%20cluster.png)
 
