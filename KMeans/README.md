@@ -157,7 +157,7 @@ PCA 3D sama persis idenya, tetapi ini menyimpan tiga komponen utama yaitu PC1, P
 Visualisasi ini menampilkan jumlah data percluster, dapat dilihat pada cluster 0 memiliki dominan hampir 99% data yang berada di cluster 0, sedangkan cluster 1 hanya 1% dari jumlah data. Menunjukkan cluster 0 sangat dominan dalam datasheet 5 juta rows ini.
  
 ## 5. Distribusi `dur` Berdasarkan Cluster
-![Distribusi fitur dur berdasarkan cluster](Assets/Distribusi%20dur%20berdasarkan%20cluster.png)
+![Distribusi fitur dur berdasarkan cluster](Assets/Distribusi%20dur%20berdasarkan%20cluster.png)<br>
 Visualisasi ini dalam grafik boxplot menampilkan distribusi fitur dur berdasarkan cluster. Sumbu X -> Cluster dan sumbu Y -> nilai dur. Kotak (box) menunjukkan interquartile range (IQR1= Q1 sampai Q3). Garis di dalam kotak merupakan median yaitu nilai tengah. Lalu Whisker (garis atas dan bawah) adalah batas nilai yang dianggap normal dan titik-titik di luar whisker adalah nilai outlier (nilai yang sangat jauh dari mayoritas data).
 
 Interpretasi untuk cluster 0
@@ -174,10 +174,29 @@ Interpretasi untuk cluster 1
   - IQR cukup besar (sekitar 1,5 - 3 detik)
   - Ada banyak outlier hingga dur 40 detik. Artinya beberapa flow sangat panjang durasinya.
 
-Kesimpulan : DIstribusi dur di cluster 1 jauh lebih besar, bervariasi dan memiliki banyak outlier. Cluster ini bisa berisi trafik, flow dengan durasi panjang, trafik streaming/long connection dan mirip ciri trafik anomali
+Kesimpulan : Distribusi dur di cluster 1 jauh lebih besar, bervariasi dan memiliki banyak outlier. Cluster ini bisa berisi trafik, flow dengan durasi panjang, trafik streaming/long connection dan mirip ciri trafik anomali
 
 ## 6. Distribusi `pktrate` Berdasarkan Cluster
-![Distribusi pktrate](Assets/Distribusi%20pktrate%20berdasarkan%20cluster.png)
+![Distribusi pktrate](Assets/Distribusi%20pktrate%20berdasarkan%20cluster.png)<br>
+
+Interpretasi untuk cluster 0
+  - Kotaknya cukup lebar dibanding cluster 1, menandakan bahwa variasi data pktrate pada cluster 0 ini bervariasi.
+  - Persebaran datanya lebih besar
+  - Median memiliki nilai lebih kecil di rentang 0.00010 - 0.00015 dibanding cluster 1
+  - Whisker panjang, persebaran data lebih besar dan bervariasi
+  - Tidak terdapat nilai outlier, menandakan bahwa data ini cukup rapi
+
+Kesimpulan : pktrate cukup rendah dibanding cluster 1. Cluster 0 punya trafik dengan pktrate yang bervariasi, tapi tetap dalam kisaran normal dan tidak banyak yang ekstrem.
+
+Interpretasi untuk cluster 1
+  - Kotak box (IQR) lebih rendah, cukup rapat dibanding cluster 1. Menandakan variasinya lebih sedikit dibanding cluster 0.
+  - Median pktrate disekitar rentang 0.00020, cukup besar dibanding cluster 1. Artinya cluster 1 rata-rata mengirim paket sedikit lebih cepat
+  - Pada rentang 0.00000 - 0.00005 muncul bentuk seperti garis tebal/strip vertikal. Itu merupakan sekumpulan outlier yang titiknya saling menimpa, nilai outliernya saling sangat dekat satu sama lain, titik-titiknya menggumpal dan membentuk seperti garis.
+  - Banyak nilai pktrate ekstrem-ren rendah (dekat nol)
+  - Ini menandakan bahwa cluster 1 memiliki banyak flow ber-pktrate rendah yang kemungkinan adalah, trafik slow atau flow pendek yang lambat. Dalam konteks DDoS ini mirip pattern slow attack.
+
+Kesimpulan : Cluster 1 menunjukkan pola trafik yang berbeda dan memiliki dua karakter utama yaitu, median pktrate lebih tinggi, variasi lebih sempit yang membentuk pola konsisten dan banyak outlier rendah. Cluster 1 adalah kelompok aliran (flow) dengan rata-rata laju paket lebih tinggi, tetapi memiliki kumpulan outlier dengan pktrate sangat rendah. Polanya lebih konsisten dibanding cluster 0. Banyaknya outlier rendah dapat menunjukkan adanya trafik tidak normal atau trafik lambat yang signifikan.
+
 
 ## 7. Distribusi `port_no` Berdasarkan Cluster
 ![Distribusi port_no](Assets/Distribusi%20port_no%20berdasarkan%20label.png)
@@ -186,7 +205,7 @@ Kesimpulan : DIstribusi dur di cluster 1 jauh lebih besar, bervariasi dan memili
 ![Distribusi rx_kbps](Assets/Distribusi%20rx_kbps%20berdasarkan%20clustering.png)
 
 ## 9. Distribusi `tot_kbps` Berdasarkan Cluster
-![Distribusi tot_kbps](Assets/Distribusi%20tot_kbps%20berdasarkan%20clustering.png
+![Distribusi tot_kbps](Assets/Distribusi%20tot_kbps%20berdasarkan%20clustering.png)
 
 ## 10. Distribusi `tot_dur` Berdasarkan Cluster
 ![Distribusi tot_dur](Assets/Distribusit%20tot_dur%20berdasarkan%20cluster.png)
