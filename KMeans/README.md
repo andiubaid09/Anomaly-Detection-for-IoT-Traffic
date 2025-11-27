@@ -194,25 +194,11 @@ import joblib
 # Muat pipeline + model
 best_model = joblib.load("XGBoost_prediction_flight_ticket.pkl")
 
-# Data baru
-data_baru = pd.DataFrame({
-    "source_city": ["Delhi"],
-    "departure_time": ["Morning"],
-    "stops": ["zero"],
-    "arrival_time": ["Aftenoon"],
-    "destination_city": ["Mumbai"],
-    "class": ["Economy"],
-    "days_left": [7],
-    "duration": [2.5]
-})
+# Data baru dalam CSV
+df = pd.read_csv("NewData_Anomaly.csv")
 
-# Prediksi harga
-prediksi = best_model.predict(data_baru)[0]
-print(f"Prediksi Harga Tiket:  {prediksi:,.2f}")
+# Melakukan clustering
+cluster = best_model.predict(data_baru)[0]
+print(cluster)
+
 ```
-
-## 🔮 Potensi Pengembangan
-- Hyperparameter tuning lebih jauh, eksplor parameter lain dengan **GridSearchCV** yang lebih luas, temukan konfigurasi yang paling optimal
-- Buat fitur baru yang relevan (feature engineering). XGBoost memang kuat, tapi performanya sangat bergantung pada kualitas fitur.
-- Ensembling dengan model lain (XGBoost + RandomForest atau Voting Regressor)
-- Regularisasi dan overfitting control, XGBoost punya 2 parameter L1 dan L2
