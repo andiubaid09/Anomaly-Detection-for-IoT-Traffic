@@ -158,6 +158,7 @@ Visualisasi ini menampilkan jumlah data percluster, dapat dilihat pada cluster 0
  
 ## 5. Distribusi `dur` Berdasarkan Cluster
 ![Distribusi fitur dur berdasarkan cluster](Assets/Distribusi%20dur%20berdasarkan%20cluster.png)
+Visualisasi ini dalam grafik boxplot menampilkan distribusi fitur dur berdasarkan cluster. Sumbu X -> Cluster dan sumbu Y -> nilai dur. Kotak (box) menunjukkan interquartile range (IQR1= Q1 sampai Q3). Garis di dalam kotak merupakan median yaitu nilai tengah. Lalu Whisker (garis atas dan bawah) adalah batas nilai yang dianggap normal dan titik-titik di luar whisker adalah nilai outlier (nilai yang sangat jauh dari mayoritas data).
 
 ## 6. Distribusi `pktrate` Berdasarkan Cluster
 ![Distribusi pktrate](Assets/Distribusi%20pktrate%20berdasarkan%20cluster.png)
