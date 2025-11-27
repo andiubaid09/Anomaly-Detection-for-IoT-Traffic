@@ -202,25 +202,6 @@ Kesimpulan : Cluster 1 menunjukkan pola trafik yang berbeda dan memiliki dua kar
 ![Distribusi port_no](Assets/Distribusi%20port_no%20berdasarkan%20label.png)<br>
 
 Interpretasi untuk cluster 0
-  - Kotaknya cukup lebar dibanding cluster 1 menandakan bahwa variasi data rx_kbps tidak bervariasi.
-  - Persebaran datanya lebih sangat kecil
-  - Median memiliki nilai di angka 0, dekat dengan nilai Q1. Artinya apa? lebih dari 25% hingga 50% data berada di nilai 0 atau identik.
-  - Nilai outlier yang sangat tinggi di cluster 0 ini. Dapat dilihat garis strip vertikal yang merupakan nilai outlier
-
-Kesimpulan : Distribusi rx_kbps ini memiliki IQR yang sangat rapat dengan outlier yang sangat tinggi (ekstrem). 
-
-
-Interpretasi untuk cluster 1
-  - Kotak box (IQR) sangat-sangat rapat.
-  - Nilai median tidak dapat diketahui saking rapatnya, asumsinya berada di rentang 0. Artinya bahwa data sangat tidak memiliki variasi
-  - Data cukup rapi, tidak terdapat outlier yang ekstrem, bahkan rata diangka 0.
-
-Kesimpulan : Berdasarkan rx_kbps, hampir di cluster 1 memiliki nilai 0 semua. Ini bisa membawa kita menyimpulkan bahwa cluster 0 adalah traffic normal sedangkan cluster 1 adalah traffic anomaly, karena tidak menerima kbps apapun. Bukan ciri dari DDoS, hanya sebuah anomaly.
-
-## 8. Distribusi `rx_kbps` Berdasarkan Cluster
-![Distribusi rx_kbps](Assets/Distribusi%20rx_kbps%20berdasarkan%20clustering.png)<br>
-
-Interpretasi untuk cluster 0
   - Kotaknya cukup rapat menandakan bahwa variasi data port_no pada cluster 0 ini sangat bervariasi.
   - Persebaran datanya lebih besar
   - Median memiliki nilai di angka 0, dekat dengan nilai Q1. Artinya apa? lebih dari 25% hingga 50% data berada di nilai 0 atau identik.
@@ -238,8 +219,43 @@ Interpretasi untuk cluster 1
 
 Kesimpulan : Cluster 1 memiliki persebaran data yang cukup rendah dibanding cluster 0. Dengan nilai Q1 yang cukup tinggi dibanding Q1 di cluster 1. Median yang dekat dengan Q3 menandakan bahwa adanya outlier di bawah yang menjadikannya skewed ke kiri. Ini tidak dapat menandakan atau mencirikan sebuah serangan DDoS karena ini adalah nomor port yang digunakan.
 
+## 8. Distribusi `rx_kbps` Berdasarkan Cluster
+![Distribusi rx_kbps](Assets/Distribusi%20rx_kbps%20berdasarkan%20clustering.png)<br>
+
+Interpretasi untuk cluster 0
+  - Kotaknya cukup lebar dibanding cluster 1 menandakan bahwa variasi data rx_kbps tidak bervariasi.
+  - Persebaran datanya lebih sangat kecil
+  - Median memiliki nilai di angka 0, dekat dengan nilai Q1. Artinya apa? lebih dari 25% hingga 50% data berada di nilai 0 atau identik.
+  - Nilai outlier yang sangat tinggi di cluster 0 ini. Dapat dilihat garis strip vertikal yang merupakan nilai outlier
+
+Kesimpulan : Distribusi rx_kbps ini memiliki IQR yang sangat rapat dengan outlier yang sangat tinggi (ekstrem). 
+
+Interpretasi untuk cluster 1
+  - Kotak box (IQR) sangat-sangat rapat.
+  - Nilai median tidak dapat diketahui saking rapatnya, asumsinya berada di rentang 0. Artinya bahwa data sangat tidak memiliki variasi
+  - Data cukup rapi, tidak terdapat outlier yang ekstrem, bahkan rata diangka 0.
+
+Kesimpulan : Berdasarkan rx_kbps, hampir di cluster 1 memiliki nilai 0 semua. Ini bisa membawa kita menyimpulkan bahwa cluster 0 adalah traffic normal sedangkan cluster 1 adalah traffic anomaly, karena tidak menerima kbps apapun. Bukan ciri dari DDoS, hanya sebuah anomaly.
+
 ## 9. Distribusi `tot_kbps` Berdasarkan Cluster
 ![Distribusi tot_kbps](Assets/Distribusi%20tot_kbps%20berdasarkan%20clustering.png)<br>
+
+Untuk interpretasi tot_kbps mirip dengan rx_kbps, grafiknya yang dihasilkan juga sama
+
+Interpretasi untuk cluster 0
+  - Kotaknya cukup lebar dibanding cluster 1 menandakan bahwa variasi data tot_kbps tidak bervariasi.
+  - Persebaran datanya lebih sangat kecil
+  - Median memiliki nilai di angka 0, dekat dengan nilai Q1. Artinya apa? lebih dari 25% hingga 50% data berada di nilai 0 atau identik.
+  - Nilai outlier yang sangat tinggi di cluster 0 ini. Dapat dilihat garis strip vertikal yang merupakan nilai outlier
+
+Kesimpulan : Distribusi tot_kbps ini memiliki IQR yang sangat rapat dengan outlier yang sangat tinggi (ekstrem). 
+
+Interpretasi untuk cluster 1
+  - Kotak box (IQR) sangat-sangat rapat.
+  - Nilai median tidak dapat diketahui saking rapatnya, asumsinya berada di rentang 0. Artinya bahwa data sangat tidak memiliki variasi
+  - Data cukup rapi, tidak terdapat outlier yang ekstrem, bahkan rata diangka 0.
+
+Kesimpulan : Berdasarkan tot_kbps, hampir di cluster 1 memiliki nilai 0 semua. Ini bisa membawa kita menyimpulkan bahwa cluster 0 adalah traffic normal sedangkan cluster 1 adalah traffic anomaly, karena tidak menerima total kbps apapun. Bukan ciri dari DDoS, hanya sebuah anomaly.
 
 ## 10. Distribusi `tot_dur` Berdasarkan Cluster
 ![Distribusi tot_dur](Assets/Distribusit%20tot_dur%20berdasarkan%20cluster.png)<br>
