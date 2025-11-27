@@ -220,16 +220,16 @@ Interpretasi untuk cluster 1
 Kesimpulan : Cluster 1 memiliki persebaran data yang cukup rendah dibanding cluster 0. Dengan nilai Q1 yang cukup tinggi dibanding Q1 di cluster 1. Median yang dekat dengan Q3 menandakan bahwa adanya outlier di bawah yang menjadikannya skewed ke kiri. Ini tidak dapat menandakan atau mencirikan sebuah serangan DDoS karena ini adalah nomor port yang digunakan
 
 ## 8. Distribusi `rx_kbps` Berdasarkan Cluster
-![Distribusi rx_kbps](Assets/Distribusi%20rx_kbps%20berdasarkan%20clustering.png)
+![Distribusi rx_kbps](Assets/Distribusi%20rx_kbps%20berdasarkan%20clustering.png)<br>
 
 ## 9. Distribusi `tot_kbps` Berdasarkan Cluster
-![Distribusi tot_kbps](Assets/Distribusi%20tot_kbps%20berdasarkan%20clustering.png)
+![Distribusi tot_kbps](Assets/Distribusi%20tot_kbps%20berdasarkan%20clustering.png)<br>
 
 ## 10. Distribusi `tot_dur` Berdasarkan Cluster
-![Distribusi tot_dur](Assets/Distribusit%20tot_dur%20berdasarkan%20cluster.png)
+![Distribusi tot_dur](Assets/Distribusit%20tot_dur%20berdasarkan%20cluster.png)<br>
 
 ## 11. Distribusi `dt` Berdasarkan Cluster
-![Distribusi dt](Assets/dt%20Distribusi%20berdasarkan%20cluster.png)
+![Distribusi dt](Assets/dt%20Distribusi%20berdasarkan%20cluster.png)<br>
 
 
 ## 🛠️ Cara Menggunakan
