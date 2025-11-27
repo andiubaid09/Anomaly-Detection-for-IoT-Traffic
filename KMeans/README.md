@@ -162,6 +162,18 @@ Visualisasi ini menampilkan jumlah data percluster, dapat dilihat pada cluster 0
 ## 6. Distribusi `pktrate` Berdasarkan Cluster
 ![Distribusi pktrate](Assets/Distribusi%20pktrate%20berdasarkan%20cluster.png)
 
+## 7. Distribusi `port_no` Berdasarkan Cluster
+![Distribusi port_no](Assets/Distribusi%20port_no%20berdasarkan%20label.png)
+
+## 8. Distribusi `rx_kbps` Berdasarkan Cluster
+![Distribusi rx_kbps](Assets/Distribusi%20rx_kbps%20berdasarkan%20clustering.png)
+
+## 9. Distribusi `tot_kbps` Berdasarkan Cluster
+![Distribusi tot_kbps](Assets/Distribusi%20tot_kbps%20berdasarkan%20clustering.png
+
+## 10. Distribusi `tot_dur` Berdasarkan Cluster)
+![Distribusi tot_dur](Assets/Distribusit%20tot_dur%20berdasarkan%20cluster.png)
+
 ## 🛠️ Cara Menggunakan
 
 ### 1. Prasyarat
