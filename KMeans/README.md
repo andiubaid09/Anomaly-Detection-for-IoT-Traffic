@@ -156,14 +156,10 @@ PCA 3D sama persis idenya, tetapi ini menyimpan tiga komponen utama yaitu PC1, P
 ![Jumlah data percluster](Assets/Jumlah%20Data%20PerCluster.png)<br>
 Visualisasi ini menampilkan jumlah data percluster, dapat dilihat pada cluster 0 memiliki dominan hampir 99% data yang berada di cluster 0, sedangkan cluster 1 hanya 1% dari jumlah data. Menunjukkan cluster 0 sangat dominan dalam datasheet 5 juta rows ini.
  
-### 5. Cluster 0 vs 1 Berdasarkan pktrate
-![Perbandingan cluster 0 vs 1 berdasarkan pktrate](Assets/Cluster%200%20vs%201%20base%20features%20pktrate.png)<br>
-Visualisasi ini menampilkan boxplot cluster 0 vs cluster 1, dimana nilai median pada cluster 0 lebih rendah dibanding cluster 1. Cluster 0 menunjukkan box yang lebih besar menandakan banyak variasi di dalamnya, cluster 0 memiliki median di angka rentang antara 0.00010 - 0.00015. Ini seperti ciri-ciri dari traffic normal/stabil. Sedangkan cluster 1 memiliki nilai median di rentang sekitar 0.00020, nilai Q3 berada paling atas dibanding nilai Q1 pada cluster 0.
-
-## 6. Distribusi `dur` Berdasarkan Cluster
+## 5. Distribusi `dur` Berdasarkan Cluster
 ![Distribusi fitur dur berdasarkan cluster](Assets/Distribusi%20dur%20berdasarkan%20cluster.png)
 
-## 7. Distribusi `pktrate` Berdasarkan Cluster
+## 6. Distribusi `pktrate` Berdasarkan Cluster
 ![Distribusi pktrate](Assets/Distribusi%20pktrate%20berdasarkan%20cluster.png)
 
 ## 🛠️ Cara Menggunakan
