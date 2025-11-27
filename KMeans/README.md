@@ -206,18 +206,18 @@ Interpretasi untuk cluster 0
   - Persebaran datanya lebih besar
   - Median memiliki nilai di angka 0, dekat dengan nilai Q1. Artinya apa? lebih dari 25% hingga 50% data berada di nilai 0 atau identik.
   - Cluster 0 punya banyak nilai rendah atau 0, sehingga membuat garis median hampir rapat dengan Q1.
+  - Data sangat menumpuk di nilai rendah (skewed ke kanan). Jadi median bisa sangat dekat Q1 karena banyak data menumpuk di bagian bawah dan distribusi tidak simetris dan ada outlier yang menarik Q3 ke atas.
   - Whisker panjang, persebaran data lebih besar dan bervariasi
   - Tidak terdapat nilai outlier, menandakan bahwa data ini cukup rapi
 
-Kesimpulan : Distribusi port_no cukup bervariasi dan persebaran datanya cukup menyebar dengan nilai median mendekati 0.
+Kesimpulan : Distribusi port_no cukup bervariasi dan persebaran datanya cukup menyebar di bagian bawah dengan nilai median mendekati 0.
 
 Interpretasi untuk cluster 1
   - Kotak box (IQR) cukup rapat dibanding cluster 0. Menandakan variasinya lebih sedikit dibanding cluster 0.
-  - Median pktrate disekitar rentang 40000, artinya bahwa nilai median tersebut cukup sering muncul di cluster 1
-  - Pada rentang 0.00000 - 0.00005 muncul bentuk seperti garis tebal/strip vertikal. Itu merupakan sekumpulan outlier yang titiknya saling menimpa, nilai outliernya saling sangat dekat satu sama lain, titik-titiknya menggumpal dan membentuk seperti garis.
+  - Median port_no disekitar rentang 40000, artinya bahwa nilai median lebih dekat ke Q3 diakibatkan dari adanya outlier yang menarik Q1 ke bawah.
   - Nilai port_no ini di cluster 1 dengan nilai Q1 (minimum) di rentang 20000. Artinya bahwa nilai minimum yang digunakan cukup tinggi dibanding cluster dimulai port_no 0.
 
-Kesimpulan : Cluster 1 memiliki persebaran data yang cukup rendah dibanding cluster 0. Dengan nilai Q1 yang cukup tinggi dibanding Q1 di cluster 1. Ini tidak dapat menandakan atau mencirikan sebuah serangan DDoS karena ini adalah nomor port yang digunakan
+Kesimpulan : Cluster 1 memiliki persebaran data yang cukup rendah dibanding cluster 0. Dengan nilai Q1 yang cukup tinggi dibanding Q1 di cluster 1. Median yang dekat dengan Q3 menandakan bahwa adanya outlier di bawah yang menjadikannya skewed ke kiri. Ini tidak dapat menandakan atau mencirikan sebuah serangan DDoS karena ini adalah nomor port yang digunakan
 
 ## 8. Distribusi `rx_kbps` Berdasarkan Cluster
 ![Distribusi rx_kbps](Assets/Distribusi%20rx_kbps%20berdasarkan%20clustering.png)
