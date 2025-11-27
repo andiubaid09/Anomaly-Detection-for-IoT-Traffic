@@ -171,8 +171,12 @@ Visualisasi ini menampilkan jumlah data percluster, dapat dilihat pada cluster 0
 ## 9. Distribusi `tot_kbps` Berdasarkan Cluster
 ![Distribusi tot_kbps](Assets/Distribusi%20tot_kbps%20berdasarkan%20clustering.png
 
-## 10. Distribusi `tot_dur` Berdasarkan Cluster)
+## 10. Distribusi `tot_dur` Berdasarkan Cluster
 ![Distribusi tot_dur](Assets/Distribusit%20tot_dur%20berdasarkan%20cluster.png)
+
+## 11. Distribusi `dt` Berdasarkan Cluster
+![Distribusi dt](Assets/dt%20Distribusi%20berdasarkan%20cluster.png)
+
 
 ## 🛠️ Cara Menggunakan
 
@@ -187,7 +191,7 @@ pip install pandas numpy scikit-learn joblib
 import pandas as pd
 import joblib
 
-# Muat model
+# Muat pipeline + model
 best_model = joblib.load("XGBoost_prediction_flight_ticket.pkl")
 
 # Data baru
