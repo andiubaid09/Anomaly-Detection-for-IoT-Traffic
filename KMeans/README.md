@@ -261,7 +261,7 @@ Kesimpulan : Berdasarkan tot_kbps, hampir di cluster 1 memiliki nilai 0 semua. I
 ![Distribusi tot_dur](Assets/Distribusit%20tot_dur%20berdasarkan%20cluster.png)<br>
 
 Interpretasi untuk cluster 0
-  - Kotaknya sangat-sangat rapat menandakan bahwa variasi data tot_kbps hampir tidak bervariasi.
+  - Kotaknya sangat-sangat rapat menandakan bahwa variasi data tot_dur hampir tidak bervariasi.
   - Persebaran datanya sangat kecil
   - Median hampir tidak dapat dipantau, kemungkinan dinilai 0.
   - Nilai outlier yang di rentang bawah 5. Nilai yang tidak cukup ekstrem jika diliat dari grafik tersebut
@@ -280,19 +280,19 @@ Kesimpulan : Berdasarkan tot_kbps, hampir di cluster 1 memiliki nilai tot_dur di
 
 Untuk interpretasi di dt cukup sama yah dengan tot_dur, intepreteasi hampir sama dengan sebagai berikut:
 Interpretasi untuk cluster 0
-  - Kotaknya sangat-sangat rapat menandakan bahwa variasi data tot_kbps hampir tidak bervariasi.
+  - Kotaknya sangat-sangat rapat menandakan bahwa variasi data dt hampir tidak bervariasi.
   - Persebaran datanya sangat kecil
   - Median hampir tidak dapat dipantau, kemungkinan dinilai 0.
   - Nilai outlier yang di rentang bawah 5. Nilai yang tidak cukup ekstrem jika diliat dari grafik tersebut
 
-Kesimpulan : Distribusi tot_dur ini memiliki penyebaran data yang cukup sedikit dan tidak bervariasi. Terdapat nilai outlier yang tidak terlalu ekstrem. Saya tidak dapat menyimpulkan ini serangan DDoS atau normal. Ini lebih ke cluster yang off (tidak memiliki total duration) 
+Kesimpulan : Distribusi dt ini memiliki penyebaran data yang cukup sedikit dan tidak bervariasi. Terdapat nilai outlier yang tidak terlalu ekstrem. Saya tidak dapat menyimpulkan ini serangan DDoS atau normal. Ini lebih ke cluster yang off (tidak memiliki total duration) 
 
 Interpretasi untuk cluster 1
   - Kotak box (IQR) sangat rapat.
   - Nilai median berada di rentang 0 - 5.
   - Terdapat nilai outlier yang sangat ekstrem sampai di 40.
 
-Kesimpulan : Berdasarkan tot_kbps, hampir di cluster 1 memiliki nilai tot_dur dibanding cluster 0, namun memiliki lonjakan (outlier) tot_dur di angka 40.
+Kesimpulan : Berdasarkan dt, hampir di cluster 1 memiliki nilai dt dibanding cluster 0, namun memiliki lonjakan (outlier) dt di angka 40.
 
 
 ## 🛠️ Cara Menggunakan
