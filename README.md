@@ -1,8 +1,8 @@
 # 📌 IoT Network Flow - Unsupervised Anomaly Detection
-Kumpulan proyek ini dalam satu repository bertujuan untuk melakukan *Anomaly Detection* pada data *network flow IoT* menggunakan pendekatan *unsupervised learning*. Karena dataset ini tidak memiliki label (semua label = NaN), metode *unsupervised learning* dengan berbagai algoritma/model dapat digunakan. *Unsupervised learning* digunakan untuk menemukan dua kelompok:
-- Cluster 0 -> Normal Traffic
-- Cluster 1 -> Anomalous/ Potential Attack Traffic
-Setelah clustering dilakukan, hasilnya dianalisis menggunakan statistik cluster, visualisasi PCA, boxplot, dan distribusi cluster untuk mengidentifikasi pola anomali di berbagai model *unsupervised learning*. 
+Kumpulan proyek ini dalam satu repository bertujuan untuk melakukan *Anomaly Detection* pada data *network flow IoT* menggunakan pendekatan *unsupervised learning*. Karena dataset ini tidak memiliki label (semua label = NaN), metode *unsupervised learning* dengan berbagai algoritma/model dapat digunakan untuk mengeksplorasi struktur tersembunyi di dalam data. Pendekatan ini dibagi menjadi dua karakteristik utama tergantung modelnya:
+- Algoritma Partisioning mengarahkan pembagian data secara tegas menjadi 2 kelompok (Cluster 0 untuk mayoritas trafik normal dan Cluster 1 untuk minoritas anomali).
+- Algoritma berbasis kepadatan membiarkan model menemukan kelompok-kelompok kepadatan alami (bisa berupa banyak cluster fungsional) secara organik, sekaligus memisahkan pencilan ekstrem ke dalam label Noise (-1) sebagai kandidat utama anomali/serangan.
+Setelah clustering dilakukan, hasilnya dianalisis menggunakan statistik cluster dan visualisasi PCA mengidentifikasi pola anomali di berbagai model *unsupervised learning*. 
 
 Dataset berisi flow-level metrics seperti :`dt`,`dur`,`tot_dur`,`pktrate`,`port_no`,`rx_kbps`,`tot_kbps`. Sebagian fitur ditemukan ada nilai 0/tidak informatif, ada nilai negatif dan tidak memiliki label. Karena itu, seluruh proses disesuaikan agar cocok untuk pendekatan *unsupervised learning*
 
@@ -58,6 +58,7 @@ Setelah itu, langkah pengujian dilakukan secara *waterfall* seperti berikut:
     - Davies Bouldin Score = 0.503 
 
 2. DBSCAN (*Density-Based Spatial Clustering of Application with Noise)
+  - Next project
 
 ## 🛠️ Cara Menggunakan Model
 Contoh untuk K-Means menggunakan pipeline:
