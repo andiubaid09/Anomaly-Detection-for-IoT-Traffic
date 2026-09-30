@@ -92,14 +92,14 @@ Performa *clustering* dievaluasi secara objektif menggunakan tiga metrik jarak s
 Karena dataset memiliki 7 fitur asli, model mereduksi dimensi tersebut menggunakan metode kompresi PCA (*Principal Component Analysis*) agar pola *cluster* dapat dilihat oleh mata manusia. **Total informasi (variasi) dari 7 fitur asli yang berhasil dipertahankan oleh 3 Principal Components adalah 87.28%**, yang berarti visualisasi ini sangat akurat mewakili bentuk asli data 7 dimensi.
 
 ### 1. PCA 2D Clustering
-![Distribusi Cluster 2D](Assets/image_d1cf5c.png)
+![Distribusi Cluster 2D](Assets/PCA 3D DBSCAN.png)
 Pada visualisasi 2D (PC1 vs PC2), terlihat dengan jelas bagaimana DBSCAN membelah data. 
 - **Cluster 0 (Merah):** Membentuk struktur masif berbentuk huruf "L" yang merepresentasikan mayoritas lalu lintas paket data.
 - **Cluster 1 (Hijau):** Terisolasi dengan sangat padat di ujung atas sumbu Y (Principal Component 2), terpisah secara tegas dari kelompok merah. Kepadatan ekstrem ini menjadi penyebab utama Silhouette Score menyentuh angka 0.89.
 - **Noise -1 (Biru):** Titik-titik anomali berhasil disaring oleh model dan tersebar renggang di area pinggiran atau di wilayah perbatasan antar *cluster*. 
 
 ### 2. PCA 3D Clustering
-![Distribusi Cluster 3D](Assets/image_d1cf76.png)
+![Distribusi Cluster 3D](Assets/PCA 3D DBSCAN.png)
 Menggunakan 3 komponen utama, persebaran data spasial menjadi semakin informatif.
 - **Cluster 0 (Biru):** Membentuk dinding kepadatan (*density wall*) yang sangat solid di salah satu sisi ruang dimensi.
 - **Cluster 1 (Oranye):** Muncul sebagai gugusan padat yang jauh berjarak dari dinding utama, mengonfirmasi tidak adanya tumpang tindih (sesuai dengan skor Davies-Bouldin 0.1072).
