@@ -57,8 +57,15 @@ Setelah itu, langkah pengujian dilakukan secara *waterfall* seperti berikut:
     - Silhouette Score = 0.849
     - Davies Bouldin Score = 0.503 
 
-2. DBSCAN (*Density-Based Spatial Clustering of Application with Noise)
-  - Next project
+2. DBSCAN (Density-Based Spatial Clustering of Application with Noise)
+  - DBSCAN adalah algoritma berbasis kepadatan spasial (density-based) yang mengelompokkan titik-titik data yang saling berdekatan dan padat tanpa perlu menentukan jumlah cluster sejak awal.
+  - Sangat efektif untuk menemukan kelompok data dengan bentuk yang tidak beraturan serta memiliki kemampuan bawaan untuk mendeteksi anomali murni dengan cara memisahkannya sebagai noise (label -1).
+  - Melalui optimasi dan pencarian parameter, model dikonfigurasi dengan radius jangkauan jarak eps= 1.5 dan syarat minimal kepadatan min_samples = 20.
+  - Hasilnya membentuk 2 cluster solid yang terpisah sangat tegas secara spasial:
+    - Jumlah noise = 100 baris -> kandidat anomali/pencilan murni
+    - Silhouette Score = 0.8937
+    - Davies Bouldin Score = 0.1072
+    - Calinski-Harabasz Score = 2391.1886
 
 ## 🛠️ Cara Menggunakan Model
 Contoh untuk K-Means menggunakan pipeline:
