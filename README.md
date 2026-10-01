@@ -67,6 +67,16 @@ Setelah itu, langkah pengujian dilakukan secara *waterfall* seperti berikut:
     - Davies Bouldin Score = 0.1072
     - Calinski-Harabasz Score = 2391.1886
 
+3. Isolation Forest
+  - Isolation Forest (iForest) adalah algoritma *unsupervised learning* yang tidak bekerja dengan cara mengelompokkan data normal (clustering) melainkan dengan cara mengisolasi anomali
+  - Menggunakan arsitektur random decision trees yang secara inheren mengisolasi nilai-nilai ekstrem. Sangat ringan secara komputasi sehingga mampu memproses jutaan baris data sekaligus.
+  - Konfigurasi n_estimators = 100, contamination = 'auto' (model secara murni menentukan ambang batas tanpa asumsi persentase dari manusia)
+  - Hasil evaluasi pada 50.000 sampel acak:
+    - Silhouette Score = 0.139
+    - Davies-Bouldin = 3.28
+    - Calinski-Harabasz Score = 1165.5934
+  - Skor metrik spasial seperti silhouette yang rendah pada Isolation Forest bukan indikasi model gagal, melainkan cerminan dari paradigma kerjanya. Analisis visual (PCA dan Boxplot) membuktikan bahwa model ini sangat sukses bekerja sesuai ranah keamanan siber
+  
 ## 🛠️ Cara Menggunakan Model
 Contoh untuk K-Means menggunakan pipeline:
 ```bash
