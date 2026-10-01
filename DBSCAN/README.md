@@ -120,28 +120,27 @@ pip install pandas numpy scikit-learn matplotlib seaborn
 ### 2. Muat dan Gunakan Model
 ```bash
 import pandas as pd
+import joblib
 from sklearn.preprocessing import StandardScaler
-from sklearn.cluster import DBSCAN
+from sklearn.metrics import pairwise_distances_argmin_min
 
-# 1. Load Data
-df = pd.read_csv("Network_Traffic_IoT.csv")
-features = ['dt', 'dur', 'tot_dur', 'pktrate', 'port_no', 'rx_kbps', 'tot_kbps']
-
-# 2. Data Cleaning (Hilangkan nilai waktu negatif)
-kolom_waktu = ['dt', 'dur', 'tot_dur']
-X_bersih = df[(df[kolom_waktu] >= 0).all(axis=1)][features]
-
-# 3. Standarisasi Fitur
+df = pd.read_csv(new_data.csv)
+model = joblib.load(dbscan_model.pkl)
 scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X_bersih)
 
-# 4. Jalankan DBSCAN
-dbscan_model = DBSCAN(eps=1.5, min_samples=20, n_jobs=-1)
-label_prediksi = dbscan_model.fit_predict(X_scaled)
+Features = ['dt','dur','tot_dur','pktrate','port_no','rx_kbps','tot_kbps']
+X = df[Features]
 
-# Tambahkan hasil ke dataframe
-X_bersih['Cluster_Result'] = label_prediksi
+X_scaled = scaler.fit_transform(X)
+titik_lama = model.components_
+label_lama = model.labels_[model.core_sample_indices_]
 
-print(f"Jumlah cluster yang terbentuk: {len(set(label_prediksi)) - (1 if -1 in label_prediksi else 0)}")
-print(f"Jumlah paket anomali (Noise): {list(label_prediksi).count(-1)}")
+indeks_terdekat, jarak =pairwise_distances_argmin_min(X_scaled, titik_lama)
+hasil_cluster = label_lama[indeks_terdekat]
+hasil_cluster[jarak > model.eps] = -1
+
+df['cluster_label'] = hasil_cluster
+print(df.head())
+df.to_csv('hasil_clustering_baru.csv', index=False)
+
 ```

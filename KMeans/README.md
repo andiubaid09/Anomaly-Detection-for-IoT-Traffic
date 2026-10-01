@@ -309,7 +309,7 @@ import pandas as pd
 import joblib
 
 # Muat pipeline + model
-best_model = joblib.load("XGBoost_prediction_flight_ticket.pkl")
+best_model = joblib.load("kmean_pipeline_model.pkl")
 
 # Data baru dalam CSV
 df = pd.read_csv("NewData_Anomaly.csv")
