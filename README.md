@@ -84,7 +84,7 @@ prediksi = model.predict(new_data)
 print("Cluster baru", prediksi)
 ```
 
-Contoh menggunakan KMeans tanpa pipeline:
+Contoh menggunakan DBSCAN tanpa pipeline:
 ```bash
 import pandas as pd
 import joblib
