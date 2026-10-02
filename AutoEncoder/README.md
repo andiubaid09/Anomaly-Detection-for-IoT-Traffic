@@ -10,7 +10,7 @@ Berbeda dengan algoritma klasik yang bergantung pada perhitungan jarak spasial a
 ## 📖 Penjelasan Tentang AutoEncoder untuk Deteksi Anomali
 AutoEncoder (AE) pada dasaarnya adalah neural network yang dilatih untuk meniru (mencetak ulang) data inputnya sendiri. Jaringan ini terdiri dari dua bagian utama: Encoder (mengkompresi data ke dalam representasi laten) dan Decoder (membangun ulang data dari representasi tersebut).
 
-Untuk kasusu *CyberSecurity*, AutoEncoder beroperasi dengan filosofi "Mengingat dan Merekonstruksi":
+Untuk kasus *CyberSecurity*, AutoEncoder beroperasi dengan filosofi "Mengingat dan Merekonstruksi":
 1. Fase Belajar: Model mayoritas menelan jutaan data normal, sehingga otaknya sangat ahli dalam mengenali dan mencetak ulang pola trafik normal.
 2. Fase Deteksi: Ketika model disodori paket data anomali, model akan kebingungan. Kegagalan model dalam mencetak ulang data ini menghasilkan selisih nilai yang besar antara input asli dan output prediksi. Selisih kuadrat inilah yang disebut Mean Squared Error (MSE)/Reconstruction Error.
 3. Jika nilai MSE melewati ambang batas (threshold) tertentu, data tersebut divonis sebagai Anomali.

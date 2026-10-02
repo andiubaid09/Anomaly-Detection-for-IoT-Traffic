@@ -77,6 +77,22 @@ Setelah itu, langkah pengujian dilakukan secara *waterfall* seperti berikut:
     - Calinski-Harabasz Score = 1165.5934
   - Skor metrik spasial seperti silhouette yang rendah pada Isolation Forest bukan indikasi model gagal, melainkan cerminan dari paradigma kerjanya. Analisis visual (PCA dan Boxplot) membuktikan bahwa model ini sangat sukses bekerja sesuai ranah keamanan siber
   
+4. AutoEncoder
+  - AutoEncoder (AE) pada dasaarnya adalah neural network yang dilatih untuk meniru (mencetak ulang) data inputnya sendiri. Jaringan ini terdiri dari dua bagian utama: Encoder (mengkompresi data ke dalam representasi laten) dan Decoder (membangun ulang data dari representasi tersebut)
+  - Berbeda dengan algoritma klasik yang bergantung pada perhitungan jarak spasial atau isolasi pohon keputusan, pendekatan Deep Learning ini mengedepankan kemampuan jaringan saraf tiruan dalam mempelajari anatomi fundamental dari data normal dan menangkap anomali melalui tingkat kegagalan rekonstruksi (Reconstruction Error)
+  - Berdasarkan hasil pencarian Keras Tuner, arsitektur terbaik yang ditemukan justru memperbesar dimensi data (Overcomplete), bukan mengompresinya:
+    - Input: 7 Fitur
+    - Layer 1 (Encoder) : 112 Unit (Aktivasi dinamis dari Keras Tuner)
+    - Layer 2 (Bottleneck): 60 Unit
+    - Layer 3 (Decoder): 112 Unit
+    - Output: 7 Unit (Aktivasi Linear, untuk menjaga rentang asli data dari StandardScaler)
+      Ekspansi ke 112 dimensi terbukti memberikan ruang bagi jaringan untuk mengurai interaksi non-linear fitur trafik jaringan dengan val_loss sangat rendah (0.04)
+  - Hasil Evaluasi pada 50.000 sampel acak:
+    - Silhouette Score : 0.8401
+    - Davies-Bouldin Score : 1.4497
+    - Calinski-Harabasz Score : 3877.3609
+  
+  
 ## 🛠️ Cara Menggunakan Model
 Contoh untuk K-Means menggunakan pipeline:
 ```bash
