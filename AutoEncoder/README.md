@@ -46,7 +46,7 @@ Berikut adalah kelemahan AutoEncoder:
 - Early Stopping: Pelatihan dikontrol ketat menggunakan patience=5 dengan pengembalian bobot terbaik (restore_best_weights=True), mencegah model menghafal buta (overfitting)sekaligus mengamankan proses dari lonjakan error (exploding gradient).
 
 ### 3. Ekstraksi Threshold Deteministik
-Batas keputusan (Decision Boundary) tidak ditebak, melainkan dihitung pasti dengan memotong distribusi MSE pada Persentil ke-99. Kalkulasi ini menghasilkan angka threshold absolut sebesar 0.2948 di mana setiap trafik dengan MSE > 0.2948 divonis sebagai anomali.
+- Batas keputusan (Decision Boundary) tidak ditebak, melainkan dihitung pasti dengan memotong distribusi MSE pada Persentil ke-99. Kalkulasi ini menghasilkan angka threshold absolut sebesar 0.2948 di mana setiap trafik dengan MSE > 0.2948 divonis sebagai anomali.
 ---
 
 ## 📈 Hasil Kinerja & Analisis Kritis Metrik
